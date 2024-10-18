@@ -57,7 +57,7 @@
                         <a class="nav-link leaderboard">Leaderboard</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link credits">Credits</a>
+                        <a class="nav-link credits" data-bs-toggle="modal" data-bs-target="#creditsModal">Credits</a>
                     </li>
                 </ul>
 
@@ -105,22 +105,39 @@
             <figcaption>spock</figcaption>
         </button>
 
-        
-        
-       
-       
-
+        <!-- modals (Rules, Leaderboards, Credits) link for rules video(https://www.youtube.com/watch?v=pIpmITBocfM) -->
         <div class="modal" id="rulesModal" tabindex="-1">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
 
                     <div class="modal-header">
-                        <h5 class="modal-title">Modal title</h5>
+                        <h1 class="modal-title">Rules</h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
 
                     <div class="modal-body">
-                        <p>Rules</p>
+                        <iframe src="https://www.youtube.com/watch?v=pIpmITBocfM" frameborder="0"></iframe>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="modal" id="creditsModal" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <h1 class="modal-title">Credits</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+
+                    <div class="modal-body">
+            
                     </div>
 
                     <div class="modal-footer">
