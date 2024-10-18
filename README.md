@@ -37,6 +37,7 @@ Features in this project have been prioretized using MoSCoW.
 
 ## Application States
 ### State Diagram
+![alt text](RPSLS-State-Diagram.png)
 
 ## Deployment
 ### Going Live
