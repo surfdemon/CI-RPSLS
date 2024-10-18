@@ -1,3 +1,13 @@
-body{ 
-    background-color: blue;
+/* Root colour variables */
+:root {
+    --bg-colour: #ECF0F1;
+    --txt-color: #2C3E50;
+    --accent-color: #E74C3C;
+    --secondary-color: #2ECC71;
+    --primary-color: #3498DB;
 }
+
+body{ 
+    background-color: var(--bg-colour);
+}
+
