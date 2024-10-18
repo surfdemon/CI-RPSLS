@@ -11,3 +11,11 @@ body{
     background-color: var(--bg-colour);
 }
 
+
+/* choiceButton styles */
+
+.buttonSVG {
+    height: 50px;
+    width: 50px;
+}
+
