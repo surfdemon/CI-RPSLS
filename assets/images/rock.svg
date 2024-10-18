@@ -1,0 +1,7 @@
+<!-- Rock Icon -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <path d="M20,50 Q30,20 50,20 Q70,20 80,50 Q90,80 50,80 Q10,80 20,50" fill="#808080" stroke="#404040" stroke-width="2"/>
+  <path d="M30,40 Q40,30 50,40" fill="none" stroke="#404040" stroke-width="1"/>
+  <path d="M60,50 Q70,40 75,55" fill="none" stroke="#404040" stroke-width="1"/>
+  <path d="M40,60 Q50,70 60,60" fill="none" stroke="#404040" stroke-width="1"/>
+</svg>

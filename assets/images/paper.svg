@@ -1,0 +1,9 @@
+<!-- Paper Icon -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <rect x="10" y="10" width="80" height="80" fill="#f0f0f0" stroke="#404040" stroke-width="2"/>
+  <line x1="20" y1="30" x2="80" y2="30" stroke="#404040" stroke-width="1"/>
+  <line x1="20" y1="50" x2="80" y2="50" stroke="#404040" stroke-width="1"/>
+  <line x1="20" y1="70" x2="80" y2="70" stroke="#404040" stroke-width="1"/>
+  <path d="M10,10 Q20,5 30,10" fill="none" stroke="#404040" stroke-width="1"/>
+  <path d="M70,10 Q80,5 90,10" fill="none" stroke="#404040" stroke-width="1"/>
+</svg>

@@ -43,18 +43,32 @@
                 aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
+
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Link</a>
+                        <a class="nav-link newGame">New Game</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link rules" data-bs-toggle="modal" data-bs-target="#rulesModal">Rules</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link leaderboard">Leaderboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link credits">Credits</a>
                     </li>
                 </ul>
+
                 <form class="d-flex" role="search">
                     <input class="form-control me-2" type="search" placeholder="Enter a user name"
                         aria-label="Enter user-name">
                     <button class="btn btn-outline-success" id="submitUsername">Submit</button>
                 </form>
+
             </div>
+
         </div>
     </nav>
 
@@ -65,6 +79,38 @@
     </header>
 
     <main>
+
+        <img src="assets/images/rock.svg" alt="rock" style="width: 50px; height: 50px;">
+        <figcaption>Rock</figcaption>
+        <img src="assets/images/paper.svg" alt="paper" style="width: 50px; height: 50px;">
+        <figcaption>paper</figcaption>
+        <img src="assets/images/scissors.svg" alt="scissors" style="width: 50px; height: 50px;">
+        <figcaption>scissors</figcaption>
+        <img src="assets/images/lizard.svg" alt="lizard" style="width: 50px; height: 50px;">
+        <figcaption>lizard</figcaption>
+        <img src="assets/images/spock.svg" alt="spock" style="width: 50px; height: 50px;">
+        <figcaption>spock</figcaption>
+
+        <div class="modal" id="rulesModal" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <h5 class="modal-title">Modal title</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+
+                    <div class="modal-body">
+                        <p>Rules</p>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
 
     </main>
 
