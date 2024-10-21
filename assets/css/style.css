@@ -19,6 +19,14 @@ body{
     font-family: Roboto, "Open Sans";
 }
 
+.show {
+    display: block !important;
+}
+
+.hide { 
+    display: none;
+}
+
 /* Game Area */ 
 #gameArea { 
     background-color: blue;
