@@ -54,7 +54,8 @@
                         <a class="nav-link rules" data-bs-toggle="modal" data-bs-target="#rulesModal">Rules</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link leaderboard">Leaderboard</a>
+                        <a class="nav-link leaderboard" data-bs-toggle="modal" data-bs-target="#scoreHistoryModal">Score
+                            History</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link credits" data-bs-toggle="modal" data-bs-target="#creditsModal">Credits</a>
@@ -64,7 +65,7 @@
                 <form class="d-flex" role="search">
                     <input class="form-control me-2" type="search" placeholder="Enter a user name"
                         aria-label="Enter user-name">
-                    <button class="btn btn-outline-success" id="submitUsername">Submit</button>
+                    <button class="btn btnUsernameSubmit" id="submitUsername">Submit</button>
                 </form>
 
             </div>
@@ -117,36 +118,86 @@
 
             </div>
         </div>
+
         <!-- modals (Rules, Leaderboards, Credits) link for rules video(https://www.youtube.com/watch?v=pIpmITBocfM) -->
-        <div class="modal modal-lg" id="rulesModal" tabindex="-1">
-            <div class="modal-dialog modal-dialog-centered">
+        <div class="modal" id="rulesModal" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
                 <div class="modal-content">
 
                     <div class="modal-header">
-                        <h1 class="modal-title">Rules</h1>
+                        <h1 class="modal-title h2">Rules</h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
 
-                    <div class="modal-body d-flex align-content-center justify-content-center">
-                        <h2>Game Overview</h2>
-                        <p>This game is an expansion of the classic Rock, Paper, Scissors game. It adds two more
-                            options: Lizard and Spock, creating a game with five choices instead of three.</p>
 
-                        <h2>How to play</h2>
-                        <ol>
-                            <li>Two players simultaneously choose one of five hand gestures representing rock, paper,
-                                scissors, lizard, or Spock.</li>
-                            <li>The winner is determined by comparing the chosen gestures according to the rules below.
-                            </li>
-                        </ol>
+                    <div class="modal-body">
+
+
+                        <div>
+                            <h2 class="h3">Game Overview</h2>
+                            <p>This game is an expansion of the classic Rock, Paper, Scissors game. It adds two more
+                                options: Lizard and Spock, creating a game with five choices instead of three.</p>
+                        </div>
 
 
 
-                        <iframe width="560" height="315"
-                            src="https://www.youtube.com/embed/pIpmITBocfM?si=jZq7QLTrHR5FbJM2"
-                            title="YouTube video player" frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                        <div class=>
+                            <h2 class="h3">How to play</h2>
+                            <ol>
+                                <li>Two players simultaneously choose one of five hand gestures representing rock,
+                                    paper,
+                                    scissors, lizard, or Spock.</li>
+                                <li>The winner is determined by comparing the chosen gestures according to the rules
+                                    below.
+                                </li>
+                            </ol>
+                        </div>
+
+
+
+                        <div>
+                            <h2 class="h3">Winning combinations</h2>
+                            <p>Each gesture can defeat two other gestures and be defeated by two others:</p>
+                            <ul>
+                                <li>Rock crushes Scissors</li>
+                                <li>Rock crushes Lizard</li>
+                                <li>Paper covers Rock</li>
+                                <li>Paper disproves Spock</li>
+                                <li>Scissors cuts Paper</li>
+                                <li>Scissors decapitates Lizard</li>
+                                <li>Lizard eats Paper</li>
+                                <li>Lizard poisons Spock</li>
+                                <li>Spock smashes Scissors</li>
+                                <li>Spock vaporizes Rock</li>
+                            </ul>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col-12">
+                                <h2 class="h3">Determining the winner</h2>
+                                <ul>
+                                    <li>If both players choose the same gesture, it's a tie.</li>
+                                    <li>Otherwise, the winner is determined by the above combinations.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <h2 class="h3">Confused? Let Sheldon explain</h2>
+
+                        <div class="row">
+                            <div class="col-6 offset-2">
+
+
+                                <div class="video-container">
+                                    <iframe width="560" height="315"
+                                        src="https://www.youtube.com/embed/pIpmITBocfM?si=jZq7QLTrHR5FbJM2"
+                                        title="YouTube video player" frameborder="0"
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="modal-footer">
@@ -165,6 +216,27 @@
 
                     <div class="modal-header">
                         <h1 class="modal-title">Credits</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+
+                    <div class="modal-body">
+
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="modal" id="scoreHistoryModal" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <h1 class="modal-title h2">Score History</h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
 
