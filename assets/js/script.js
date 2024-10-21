@@ -45,3 +45,7 @@ document.querySelectorAll(".choiceButton").forEach(button => {
         alert(`You chose ${playerChoice}, Computer chose ${computerChoice}.`);
     });
 });
+
+
+
+
