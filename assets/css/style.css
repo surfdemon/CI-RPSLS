@@ -1,3 +1,7 @@
+/* google fonts import */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+
 /* Root colour variables */
 :root {
     --bg-colour: #ECF0F1;
@@ -7,8 +11,54 @@
     --primary-color: #3498DB;
 }
 
+/* body styles */
 body{ 
     background-color: var(--bg-colour);
+    margin: 0;
+    padding: 0;
+    font-family: Roboto, "Open Sans";
+}
+
+/* Game Area */ 
+#gameArea { 
+    background-color: blue;
+}
+
+#playerArea { 
+    background-color: orange;
+}
+
+#computerArea { 
+    background-color: yellow;
+}
+
+.scoreArea { 
+    font-weight:bolder;
+}
+
+/* navbar styles */
+.navbar {
+    background-color: var(--primary-color) !important;
+}
+
+.navbar-brand {
+    letter-spacing: 2px;
+}
+
+.btnUsernameSubmit {
+    color: var(--accent-color);
+    border: 1px solid var(--accent-color);
+    font-weight: 600;
+    letter-spacing: 2px;
+}
+
+.btnUsernameSubmit:hover {
+    background-color: var(--accent-color);
+}
+
+.navbar-nav li {
+    cursor: pointer;
+    letter-spacing: 1px;
 }
 
 /* modal styles */
@@ -16,6 +66,17 @@ body{
     overflow-y: auto;
 }
 
+.modal ul, ol {
+    list-style: none;
+}
+
+.modal-body {
+    background-color: var(--bg-colour);
+}
+
+.modal-header, .modal-footer {
+    background-color: var(--primary-color);
+}
 
 /* choiceButton styles */
 
@@ -24,3 +85,35 @@ body{
     width: 50px;
 }
 
+/* video container */
+.video-container {
+    width: 100%;
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 50px;
+    left: 50px;
+    width: 100%;
+    height: 100%;
+}
+
+/* footer styles */
+footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+}
+
+footer ul {
+    cursor: pointer;
+}
+
+.footerAnchor {
+    text-decoration: none;
+}
