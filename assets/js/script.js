@@ -1,3 +1,65 @@
+// QUIPS
+const quipsDefeat = [ // CPU if player wins
+    "Live long and prosper.",
+    "That move was... illogical.",
+    "I am defeated."
+
+];
+
+const quips = [ // general CPU win
+    "You let your emotions cloud your judgement.",
+    "I am of a superior intellect.",
+    "You are defeated."
+
+];
+
+const quipsRock = [ // CPU win against rock
+    "Such a primative instrument.",
+    "Perhaps build a build a wall with it next time."
+
+];
+
+const quipsPaper = [ // CPU win against paper
+    "Your defence was... fickle.",
+    "Paper? At a moment like this?"
+
+];
+
+const quipsScissors = [ // CPU win against scissors
+    "The choice of a blade was obvious... too obvious.",
+    "A bold time to assume the offense. Foolish all the same."
+
+];
+
+const quipsLizard = [ // CPU win against lizard
+    "I have rendered your reptile inert.",
+    "Your lizard, my friend, is dead."
+
+];
+
+const quipsSpock = [ // CPU win against spock
+    "Of all the souls I have encountered in my travels, his was the most human.",
+    "You will serve under me yet, Spock."
+
+];
+
+// push general wins onto specfic win arrays
+quipsRock.push(quips);
+quipsPaper.push(quips);
+quipsScissors.push(quips);
+quipsLizard.push(quips);
+quipsSpock.push(quips);
+
+const CPUverbs = {
+    rock: quipsRock,
+    paper: quipsPaper,
+    scissors: quipsScissors,
+    lizard: quipsLizard,
+    spock: quipsSpock,
+    defeat: quipsDefeat
+}
+// QUIPS ENDS
+
 const choices = ["rock", "paper", "scissors", "lizard", "spock"];
 const rules = {
     rock: ["scissors", "lizard"],
@@ -6,7 +68,6 @@ const rules = {
     lizard: ["spock", "paper", ],
     spock: ["scissors", "rock"]
 };
-import CPUverbs from './quips';
 
 // assigning the computer a random choice
 function getComputerChoice() {
@@ -27,19 +88,20 @@ function getWinner(playerChoice, computerChoice) {
 };
 // function to update the score and show the result
 function updateScore(winner, playerChoice, computerChoice) {
-    console.log("updateScore")
+    console.log("updateScore. playerChoice = " + playerChoice + " computerChoice = " + computerChoice)
+
     if (winner === 'tie') {
         console.log("Its a tie!");
     } else if (winner === 'player') {
         console.log("You Win!");
         playerScore++;
         document.getElementById("audioPlayerWin").play();
-        document.getElementById("CPUsay").innerHTML(CPUverbs.defeat);
+        document.getElementById("CPUsay").innerHTML = CPUverbs.defeat[Math.floor(Math.random()*CPUverbs.defeat.length)];
     } else {
         console.log("Computer Wins!");
         computerScore++;
         document.getElementById("audioCPUwin").play();
-        document.getElementById("CPUsay").innerHTML(CPUverbs.playerChoice);
+        document.getElementById("CPUsay").innerHTML = CPUverbs[playerChoice][Math.floor(Math.random()*CPUverbs[playerChoice].length)];
     }
 };
 //event listeners for player choice buttons
@@ -50,7 +112,7 @@ document.querySelectorAll(".choiceButton").forEach(button => {
         document.getElementById("audioBtnClick").play();
 
         // Show choices and result
-        updateScore(getWinner, playerChoice, computerChoice);
+        updateScore(getWinner(playerChoice, computerChoice), playerChoice, computerChoice);
         alert(`You chose ${playerChoice}, Computer chose ${computerChoice}.`);
 
     });
