@@ -51,7 +51,11 @@ quipsScissors.push(quips);
 quipsLizard.push(quips);
 quipsSpock.push(quips);
 
-// use `import {quipsDefeat, quipsRock, quipsPaper, quipsScissors, quipsLizard, quipsSpock} from 'assets/js/quips.js';` in script.js
-// configure index.html with modules using `type="module"` in script element
-export default quips;
-export {quipsDefeat, quipsRock, quipsPaper, quipsScissors, quipsLizard, quipsSpock}
+export default CPUverbs = {
+    rock: quipsRock,
+    paper: quipsPaper,
+    scissors: quipsScissors,
+    lizard: quipsLizard,
+    spock: quipsSpock,
+    defeat: quipsDefeat
+}
