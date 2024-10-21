@@ -11,12 +11,12 @@
     --primary-color: #3498DB;
 }
 
+/* body styles */
 body{ 
     background-color: var(--bg-colour);
     margin: 0;
     padding: 0;
 }
-
 
 /* Game Area */ 
 #gameArea { 
@@ -33,11 +33,6 @@ body{
 
 .scoreArea { 
     font-weight:bolder;
-}
-
-
-.mainTxtColour {
-    color: var(--txt-color);
 }
 
 /* navbar styles */
