@@ -25,11 +25,11 @@ function getWinner(playerChoice, computerChoice) {
 };
 // function to update the score and show the result
 function updateScore(winner, playerChoice, computerChoice) {
-    const resultDiv = document.getElementById('result');
+    const resultDiv = document.getElementById("result");
     let message = `Player chose ${playerChoice}, Computer chose ${computerChoice}. `;
 
     if (winner === 'tie') {
-        message += "Its a tie!"
+        message += "Its a tie!";
     } else if (winner === 'player') {
         message += "You Win!";
         playerScore++;
@@ -37,7 +37,9 @@ function updateScore(winner, playerChoice, computerChoice) {
         message += "Computer Wins!";
         computerScore++;
     }
-
-
-
 };
+
+// update result message
+resultDiv.textcontent = message;
+document.getElementById("playerScore").textContent = playerScore;
+document.getElementById("computerScore").textContent = computerScore;
