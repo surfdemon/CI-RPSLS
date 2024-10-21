@@ -43,17 +43,38 @@ body{
 /* navbar styles */
 .navbar {
     background-color: var(--primary-color) !important;
-    /* color: var(--txt-color); */
 }
 
 .btnUsernameSubmit {
     color: var(--accent-color);
     border: 1px solid var(--accent-color);
+    font-weight: 600;
+    letter-spacing: 2px;
+}
+
+.btnUsernameSubmit:hover {
+    background-color: var(--accent-color);
+}
+
+.navbar-nav li {
+    cursor: pointer;
 }
 
 /* modal styles */
 #rulesModal {
     overflow-y: auto;
+}
+
+.modal ul, ol {
+    list-style: none;
+}
+
+.modal-body {
+    background-color: var(--bg-colour);
+}
+
+.modal-header, .modal-footer {
+    background-color: var(--primary-color);
 }
 
 /* choiceButton styles */
