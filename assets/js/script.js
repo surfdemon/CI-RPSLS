@@ -40,6 +40,17 @@ function updateScore(winner, playerChoice, computerChoice) {
 };
 
 // update result message
-resultDiv.textcontent = message;
-document.getElementById("playerScore").textContent = playerScore;
-document.getElementById("computerScore").textContent = computerScore;
+
+
+//event listeners for player choice buttons
+document.querySelectorAll(".choiceButton").forEach(button => {
+    button.addEventListener("click", function() {
+        const playerChoice = this.getAttribute("data-type");
+        const computerChoice = getComputerChoice();
+
+        const result = determineWinner(playerChoice, computerChoice);
+
+        // Show choices and result
+        alert(`You chose ${playerChoice}, Computer chose ${computerChoice}. ${result}`);
+    });
+});
