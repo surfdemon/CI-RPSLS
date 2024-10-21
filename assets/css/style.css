@@ -17,6 +17,25 @@ body{
     padding: 0;
 }
 
+
+/* Game Area */ 
+#gameArea { 
+    background-color: blue;
+}
+
+#playerArea { 
+    background-color: orange;
+}
+
+#computerArea { 
+    background-color: yellow;
+}
+
+.scoreArea { 
+    font-weight:bolder;
+}
+
+
 .mainTxtColour {
     color: var(--txt-color);
 }
@@ -31,6 +50,7 @@ body{
     color: var(--accent-color);
     border: 1px solid var(--accent-color);
 }
+
 /* modal styles */
 #rulesModal {
     overflow-y: auto;
