@@ -78,37 +78,42 @@
 
     </header>
 
-    <main>
-        <div id="gameArea">
-            <div id="playerArea">
-                <div id="scoreArea">Player Score: <span id="playerScore"></span></div>
-                <button class="choiceButton rockButton" data-type="rock">
-                    <img src="assets/images/rock.svg" alt="rock" class="buttonSVG">
-                    <figcaption>Rock</figcaption>
-                </button>
+    <main class="mx-auto text-center">
+        <div id="gameArea" class="justify-content-around">
+            <div id="playerArea" class="col-4">
+                <div id="row1">
+                    <div id="scoreArea"><strong>Player Score: <span id="playerScore">0</span></strong></div>
+                    <button class="choiceButton rockButton" data-type="rock">
+                        <img src="assets/images/rock.svg" alt="rock" class="buttonSVG">
+                        <figcaption>Rock</figcaption>
+                    </button>
+                </div>
+                <div id="row2" class="justify-content-between">
+                    <button class="choiceButton lizardButton" data-type="lizard">
+                        <img src="assets/images/lizard.svg" alt="lizard" class="buttonSVG">
+                        <figcaption>Lizard</figcaption>
+                    </button>
 
-                <button class="choiceButton paperButton" data-type="paper">
-                    <img src="assets/images/paper.svg" alt="paper" class="buttonSVG">
-                    <figcaption>Paper</figcaption>
-                </button>
 
-                <button class="choiceButton scissorsButton" data-type="scissors">
-                    <img src="assets/images/scissors.svg" alt="scissors" class="buttonSVG">
-                    <figcaption>Scissors</figcaption>
-                </button>
+                    <button class="choiceButton paperButton" data-type="paper">
+                        <img src="assets/images/paper.svg" alt="paper" class="buttonSVG">
+                        <figcaption>Paper</figcaption>
+                    </button>
+                </div>
+                <div id="row3" class="justify-content-around">
+                    <button class="choiceButton spockButton" data-type="spock">
+                        <img src="assets/images/spock.svg" alt="spock" class="buttonSVG">
+                        <figcaption>Spock</figcaption>
+                    </button>
 
-                <button class="choiceButton lizardButton" data-type="lizard">
-                    <img src="assets/images/lizard.svg" alt="lizard" class="buttonSVG">
-                    <figcaption>Lizard</figcaption>
-                </button>
-
-                <button class="choiceButton spockButton" data-type="spock">
-                    <img src="assets/images/spock.svg" alt="spock" class="buttonSVG">
-                    <figcaption>Spock</figcaption>
-                </button>
+                    <button class="choiceButton scissorsButton" data-type="scissors">
+                        <img src="assets/images/scissors.svg" alt="scissors" class="buttonSVG">
+                        <figcaption>Scissors</figcaption>
+                    </button>
+                </div>
             </div>
-            <div id="computerArea">
-                <div id="scoreArea">Computer Score: <span id="computerScore">0</span></div>
+            <div id="computerArea" class="col-4">
+                <div id="scoreArea"><strong>Computer Score: <span id="computerScore">0</span></strong></div>
 
             </div>
         </div>

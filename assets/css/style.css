@@ -11,6 +11,23 @@ body{
     background-color: var(--bg-colour);
 }
 
+/* Game Area */ 
+#gameArea { 
+    background-color: blue;
+}
+
+#playerArea { 
+    background-color: orange;
+}
+
+#computerArea { 
+    background-color: yellow;
+}
+
+.scoreArea { 
+    font-weight:bolder;
+}
+
 /* modal styles */
 #rulesModal {
     overflow-y: auto;
