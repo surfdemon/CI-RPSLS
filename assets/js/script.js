@@ -6,6 +6,8 @@ const rules = {
     lizard: ["spock", "paper", ],
     spock: ["scissors", "rock"]
 };
+import CPUverbs from './quips';
+
 // assigning the computer a random choice
 function getComputerChoice() {
     return choices[Math.floor(Math.random() * choices.length)];
@@ -25,14 +27,19 @@ function getWinner(playerChoice, computerChoice) {
 };
 // function to update the score and show the result
 function updateScore(winner, playerChoice, computerChoice) {
+    console.log("updateScore")
     if (winner === 'tie') {
-        message += "Its a tie!";
+        console.log("Its a tie!");
     } else if (winner === 'player') {
-        message += "You Win!";
+        console.log("You Win!");
         playerScore++;
+        document.getElementById("audioPlayerWin").play();
+        document.getElementById("CPUsay").innerHTML(CPUverbs.defeat);
     } else {
-        message += "Computer Wins!";
+        console.log("Computer Wins!");
         computerScore++;
+        document.getElementById("audioCPUwin").play();
+        document.getElementById("CPUsay").innerHTML(CPUverbs.playerChoice);
     }
 };
 //event listeners for player choice buttons
@@ -40,8 +47,11 @@ document.querySelectorAll(".choiceButton").forEach(button => {
     button.addEventListener("click", function() {
         const playerChoice = this.getAttribute("data-type");
         const computerChoice = getComputerChoice();
+        document.getElementById("audioBtnClick").play();
 
         // Show choices and result
+        updateScore(getWinner, playerChoice, computerChoice);
         alert(`You chose ${playerChoice}, Computer chose ${computerChoice}.`);
+
     });
 });
