@@ -10,6 +10,8 @@ A web-based, fully functional game, where Users go against our code in games of 
 ### Target Audience
 Bored people.
 
+### Wireframes
+
 ### User Stories
 Features in this project have been prioretized using MoSCoW.
 - **As a** user, **I want to be able to:** play a game **so that:** I derive enjoyment from it.
@@ -34,19 +36,17 @@ Features in this project have been prioretized using MoSCoW.
 - **As a** user, **I want to be able to:** play against another human **so that:** I can play against friends and others on the site.
 >[*Won't-Have:* Given the technologies selected for this product, platforming one game for two user's is beyond the scope of what we will accomplish in this project. This option could be made possible by incorperating a real-time, backend software into the applications stack.]
 
-
-### Wireframes
-
 ## Considerations
 ### Technology
-#### Design:
-- **...:** ...
+- **Youtube Embeds:** ...
+- **Bootstrap:** The stack for this application is exclusively Bootstrap, and it is our largest dependency. Bootstrap enables us to create clear, pre-formatted components, and cuts down on the demands for time spent in CSS development.
 ### Accessibility
 - **...:** ...
 ### Aesthetics
-- **...:** …
-#### Art:
-- **...:** …
+- **Bootstrap:** The components provided by Bootstrap are simple, and highly customizeable. Given the projects limitted visual design demands, this is more than a desireable amount of developmental agency.
+- **SVGs:** For the game buttons, we used Claude AI to generate SVG files for each choice's icon. These came out to be simple, fun, and small enough to imploy without dependencies.
+
+
 
 ## Application States
 ### State Diagram
