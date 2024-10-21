@@ -1,10 +1,17 @@
 // QUIPS
 const quipsDefeat = [ // CPU if player wins
     "Live long and prosper.",
-    "That move was... illogical.",
+    "That move was... illogical. Well done!",
     "I am defeated."
 
 ];
+
+const quipsTie = [ // CPU draw
+    "An impass.",
+    "Stalemates are unavoidable",
+    "You played logically. So did I."
+
+]
 
 const quips = [ // general CPU win
     "You let your emotions cloud your judgement.",
@@ -56,7 +63,8 @@ const CPUverbs = {
     scissors: quipsScissors,
     lizard: quipsLizard,
     spock: quipsSpock,
-    defeat: quipsDefeat
+    defeat: quipsDefeat,
+    tie: quipsTie
 }
 // QUIPS ENDS
 
@@ -92,13 +100,17 @@ function updateScore(winner, playerChoice, computerChoice) {
 
     if (winner === 'tie') {
         console.log("Its a tie!");
+        document.getElementById("resultSay").innerHTML = "No one Wins..."
+        document.getElementById("CPUsay").innerHTML = CPUverbs.tie[Math.floor(Math.random()*CPUverbs.tie.length)];
     } else if (winner === 'player') {
-        console.log("You Win!");
+        console.log("player win");
+        document.getElementById("resultSay").innerHTML = "Player Wins!"
         playerScore++;
         document.getElementById("audioPlayerWin").play();
         document.getElementById("CPUsay").innerHTML = CPUverbs.defeat[Math.floor(Math.random()*CPUverbs.defeat.length)];
     } else {
-        console.log("Computer Wins!");
+        console.log("computer win");
+        document.getElementById("resultSay").innerHTML = "Computer Wins!"
         computerScore++;
         document.getElementById("audioCPUwin").play();
         document.getElementById("CPUsay").innerHTML = CPUverbs[playerChoice][Math.floor(Math.random()*CPUverbs[playerChoice].length)];
@@ -113,7 +125,7 @@ document.querySelectorAll(".choiceButton").forEach(button => {
 
         // Show choices and result
         updateScore(getWinner(playerChoice, computerChoice), playerChoice, computerChoice);
-        alert(`You chose ${playerChoice}, Computer chose ${computerChoice}.`);
+        document.getElementById("choiceSay").innerHTML = `You chose ${playerChoice}, Computer chose ${computerChoice}`;
 
     });
 });
