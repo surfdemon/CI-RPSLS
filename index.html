@@ -31,6 +31,9 @@
     <!-- Page Title -->
     <title>RPSLS</title>
 
+    <!-- Test useranme scripts -->
+     <script type="module" src="./assets/js/username.js"></script>
+
 </head>
 
 <body>
@@ -71,15 +74,15 @@
                     </li>
                 </ul>
 
-                <form class="d-flex" role="search">
+                <form action="">
                     <input class="form-control me-2" type="search" placeholder="Enter a user name"
-                        aria-label="Enter user-name">
+                        aria-label="Enter user-name" id="newUsername">
+                    </form>
                     <button class="btn btnUsernameSubmit" id="submitUsername">Submit</button>
-                </form>
+                
 
             </div>
 
-        </div>
     </nav>
 
     <header>
@@ -92,7 +95,7 @@
     
 
             <div id="playerArea" class="col-12 col-md-12 col-lg-4">
-                <div id="scoreArea"><strong>Player Score: <span id="playerScore">0</span></strong></div>
+                <div id="scoreArea"><strong><span id="playerUsername">Player Score</span>: <span id="playerScore">0</span></strong></div>
 
                 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
                 <!-- Created with Inkscape (http://www.inkscape.org/) -->
@@ -1359,7 +1362,7 @@
                     </div>
 
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary">Reset game data</button>
+                        <button type="button" class="btn btn-secondary log-reset">Reset game data</button>
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     </div>
 
