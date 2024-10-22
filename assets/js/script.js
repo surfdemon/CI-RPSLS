@@ -74,6 +74,25 @@ const CPUverbs = {
     tie: quipsTie
 }
 // QUIPS ENDS
+// AUDIO CONTROL
+function toggleMuteAudio() {
+    var soundBtn = document.getElementById("audioBtnClick");
+    var soundCPU = document.getElementById("audioCPUwin");
+    var soundPla = document.getElementById("audioPlayerWin");
+    console.log('toggle mute');
+if (soundBtn.muted === true) {
+    soundBtn.muted = false;
+    soundCPU.muted = false;
+    soundPla.muted = false;
+    console.log('on');
+} else {
+    soundBtn.muted = true;
+    soundCPU.muted = true;
+    soundPla.muted = true;
+    console.log('off');
+}};
+toggleMuteAudio(); // mutes audio on boot-up
+// AUDIO CONTROL ENDS
 
 const choices = ["rock", "paper", "scissors", "lizard", "spock"];
 const rules = {
