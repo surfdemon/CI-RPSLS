@@ -5,7 +5,6 @@ const quipsDefeat = [ // CPU if player wins
     "I am defeated.",
     "Well played.",
     "Bested? By a human!?"
-
 ];
 
 const quipsTie = [ // CPU draw
@@ -14,47 +13,40 @@ const quipsTie = [ // CPU draw
     "You played logically. So did I.",
     "This only delays the inevitable.",
     "What are the odds? They're 20%."
-
 ]
 
 const quips = [ // general CPU win
     "You are defeated.",
-
 ];
 
 const quipsRock = [ // CPU win against rock
     "Such a primative instrument.",
     "Perhaps build a wall with it next time.",
     "Your civilization has yet evolved beyond stone?"
-
 ];
 
 const quipsPaper = [ // CPU win against paper
     "Your defence was... fickle.",
     "Paper? At a moment like this?",
     "We use datapads in the 25th century."
-
 ];
 
 const quipsScissors = [ // CPU win against scissors
     "The choice of a blade was obvious... too obvious.",
     "A bold time to assume the offense. Foolish all the same.",
     "En Garde!"
-
 ];
 
 const quipsLizard = [ // CPU win against lizard
     "I have rendered your reptile inert.",
     "Your lizard, my friend, is dead.",
     "It hissed at me. I killed the beast..."
-
 ];
 
 const quipsSpock = [ // CPU win against spock
     "Of all the souls I have encountered in my travels, his was the most human.",
     "You will serve under me yet, Spock.",
     "Perhaps send a search party for him?"
-
 ];
 
 // push general wins onto specfic win arrays
@@ -151,7 +143,6 @@ const hideCookieMsg = () => {
     document.getElementById('cookieMsg').classList.remove('showCookieMsg');
 }
 
-
 document.addEventListener('DOMContentLoaded', () => { 
     document.getElementById('btnMute').addEventListener('click', toggleMuteAudio);
     document.getElementById('cookieButtonAccept').addEventListener('click', cookiesAccepted);
@@ -161,7 +152,6 @@ document.addEventListener('DOMContentLoaded', () => {
     } else { 
         showUserForm();
     }
-
     let username = localStorage.username;
     if (username !== undefined && localStorage.logScores === 'true' ){
         updateUsernameOnScreen(username);
@@ -194,6 +184,7 @@ const updateScoresOnPage = () => {
 // function to update the score and show the result
 function updateScore(winner, playerChoice, computerChoice) {
     console.log("updateScore. playerChoice = " + playerChoice + " computerChoice = " + computerChoice)
+    showComputerChoice(computerChoice);
     let cpuSay;
     if (winner === 'tie') {
         console.log("Its a tie!");
@@ -237,13 +228,18 @@ document.querySelectorAll(".choiceButton").forEach(button => {
         const computerChoice = getComputerChoice();
         document.getElementById("audioBtnClick").load();
         document.getElementById("audioBtnClick").play();
-
         // Show choices and result
         document.getElementById("plaChoice").innerHTML = `${playerChoice}`
         document.getElementById("choiceSay").innerHTML = `You chose ${playerChoice}, Computer chose ${computerChoice}`;
         updateScore(getWinner(playerChoice, computerChoice), playerChoice, computerChoice);
     });
 });
+
+const showComputerChoice = (computerChoice) => { 
+    console.log(`computerChoice is ${computerChoice}`);
+    document.getElementById(`${computerChoice}TargetComputer`).classList.add('show');
+    setTimeout(() =>{ document.getElementById(`${computerChoice}TargetComputer`).classList.remove('show') }, 2000);
+}
 
 const updateUsernameOnScreen = (username) => {
     console.log(`username is ${username}`);
@@ -264,8 +260,6 @@ const updateUsernameOnScreen = (username) => {
 
 const createNewUsername = () => {
     const newUsername = document.querySelector("#newUsername").value;
-    // const playerUsername = document.querySelector("#playerUsername");
-
     if (newUsername.length > 15) {
         alert("Please chose a shorter username...")
     } else {
@@ -279,7 +273,6 @@ const createNewUsername = () => {
 document.getElementById("submitUsername").addEventListener("click", createNewUsername)
 
 document.getElementById("newUsername").addEventListener("keydown", function(event) {
-
     if (event.key === "Enter") {
         event.preventDefault();
         createNewUsername();
