@@ -147,6 +147,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('btnMute').addEventListener('click', toggleMuteAudio);
     document.getElementById('cookieButtonAccept').addEventListener('click', cookiesAccepted);
     document.getElementById('cookieButtonReject').addEventListener('click', cookiesRejected);
+    document.getElementById('btnResetGameData').addEventListener('click', resetGameData);
     if ( localStorage.logScores !== 'true' ) { 
         showCookieMsg();
     } else { 
@@ -156,6 +157,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (username !== undefined && localStorage.logScores === 'true' ){
         updateUsernameOnScreen(username);
     }
+    populateLogHistory();
 })
 
 const logScoresToLocalStorage = (winner, cpuSay) => { 
@@ -219,7 +221,7 @@ function updateScore(winner, playerChoice, computerChoice) {
         document.getElementById("CPUsay").innerHTML = cpuSay;
     }
     logScoresToLocalStorage(winner, cpuSay);
-    updateHistoryLog(winner, cpuSay, localStorage.playerScore, localStorage.computerScore);
+    updateHistoryLog(winner, cpuSay, playerScore, computerScore);
 };
 
 //event listeners for player choice buttons
@@ -282,7 +284,28 @@ document.getElementById("newUsername").addEventListener("keydown", function(even
 
 const updateHistoryLog = (winner, quip, playerScore, computerScore) => { 
     let log = document.getElementsByClassName('log')[0];
-    let logEntry = "<p><b>(" +  playerScore + ":" +  computerScore + ")</b> " + winner + " wins</p><p></p><p>" + quip + "</p>";
+    let logEntry;
+    if (winner === "tie"){
+        logEntry = "<p><b>(" +  playerScore + ":" +  computerScore + ")</b> " + winner + " no one wins</p><p></p><p>" + quip + "</p>";
+    } else {
+        logEntry = "<p><b>(" +  playerScore + ":" +  computerScore + ")</b> " + winner + " wins</p><p></p><p>" + quip + "</p>";
+    }
     log.innerHTML = log.innerHTML + logEntry;
-    console.log(logEntry);
+}
+
+const populateLogHistory = () => { 
+    let logs = JSON.parse(localStorage.scoreHistory);
+    logs.forEach((log) => {
+        updateHistoryLog(log.winner, log.quip, log.playerScore, log.computerScore);
+    });
+}
+
+const resetGameData = () => {
+    localStorage.removeItem('scoreHistory');
+    localStorage.removeItem('playerScore');
+    localStorage.removeItem('computerScore');
+    let log = document.getElementsByClassName('log')[0];
+    log.innerHTML = "";
+    playerScore = 0;
+    computerScore = 0;
 }
