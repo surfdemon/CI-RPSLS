@@ -80,6 +80,7 @@ const toggleMuteAudio = () => {
     var soundBtn = document.getElementById("audioBtnClick");
     var soundCPU = document.getElementById("audioCPUwin");
     var soundPla = document.getElementById("audioPlayerWin");
+    var muteBtn = document.getElementById("btnMute");
     console.log('toggle mute');
 if (soundBtn.muted === true) {
     muteBtn.innerHTML = "Unmuted"
@@ -198,6 +199,8 @@ function updateScore(winner, playerChoice, computerChoice) {
         document.getElementById("resultSay").innerHTML = "Player Wins!"
         playerScore++;
         document.getElementById("playerScore").innerHTML = playerScore;
+        document.getElementById("audioCPUwin").load();
+        document.getElementById("audioPlayerWin").load();
         document.getElementById("audioPlayerWin").play();
         document.getElementById("CPUsay").innerHTML = CPUverbs.defeat[Math.floor(Math.random()*CPUverbs.defeat.length)];
     } else {
@@ -205,6 +208,8 @@ function updateScore(winner, playerChoice, computerChoice) {
         document.getElementById("resultSay").innerHTML = "Computer Wins!"
         computerScore++;
         document.getElementById("computerScore").innerHTML = computerScore;
+        document.getElementById("audioCPUwin").load();
+        document.getElementById("audioPlayerWin").load();
         document.getElementById("audioCPUwin").play();
         document.getElementById("CPUsay").innerHTML = CPUverbs[playerChoice][Math.floor(Math.random()*CPUverbs[playerChoice].length)];
     }
@@ -215,6 +220,7 @@ document.querySelectorAll(".choiceButton").forEach(button => {
     button.addEventListener("click", function() {
         const playerChoice = this.getAttribute("data-type");
         const computerChoice = getComputerChoice();
+        document.getElementById("audioBtnClick").load();
         document.getElementById("audioBtnClick").play();
 
         // Show choices and result
