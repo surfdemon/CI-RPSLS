@@ -52,7 +52,7 @@ Features in this project have been prioretized using MoSCoW.
 - **Youtube Embeds:** ...
 - **Bootstrap:** The stack for this application is exclusively Bootstrap, and it is our largest dependency. Bootstrap enables us to create clear, pre-formatted components, and cuts down on the demands for time spent in CSS development.
 ### Accessibility
-- **HTML Structuring:** The web application is organized into header, main and footer tags for tools such as search engines and page readers. Due to the nature of this website, 
+- **HTML Structuring:** The web application is organized into header, main and footer tags for tools such as search engines and page readers. Due to the nature of this website, there is  a greater challenge present in attemping to maintain functionality if CSS is disabled. The website will not meet it's purpose without Javascript enabled.
 ### Aesthetics
 - **Bootstrap:** The components provided by Bootstrap are simple, and highly customizeable. Given the projects limitted visual design demands, this is more than a desireable amount of developmental agency.
 - **SVGs:** For the game buttons, we used Claude AI to generate SVG files for each choice's icon. These came out to be simple, fun, and small enough to imploy without dependencies.
@@ -65,8 +65,15 @@ Features in this project have been prioretized using MoSCoW.
 
 ## Deployment
 ### Going Live
+**GitHub Pages:** For this project,we chose to favour an early deployment for testing reasons. For a web application which is very Javascript focused, this proved vital for speeding up the debugging process, and addressing a littany of small issues which would arise throughout. By accessing Settings -> Pages and deploying from the main root branch, we are able to have a live public deployment of our main branch.
 
 ### Testing Results
+**Browser Dev Tools - Console:** By openning dev tools in the deployment, or local port of our working branches using python3's http.server method in gitpod, we were able to view the console, and see where syntax errors were occuring in our script.js file.
+
+For example, the computer dialogue options are stored in arrays that are randomly selected from, and the arrays are stored in one object. In initially writing the line of code responsible for fetching the computer's dialogue, no consideration was made for how the value of playerChoice would need to be used to select which property of the computer dialogue object to use for pulling a random element out of said property's array. Writing this in one line of code meant a syntax error:
+`document.getElementById("CPUsay").innerHTML = CPUverbs.playerChoice[Math.floor(Math.random()*CPUverbs.playerChoice.length)];`
+because the name 'playerChoice' did not corresponde to a property inside CPUverbs, this code did not function. Debugging using the browser's dev tools, as well as console logs written into the script.js file helped locate this problem, and why the dialogue lines were returning as undefined. After some research, we found that an index selection syntax could be used with objects, where playerChoice could be evalutated as a value for the index of CPUverbs. This made the line of code function.
+`document.getElementById("CPUsay").innerHTML = CPUverbs[playerChoice][Math.floor(Math.random()*CPUverbs[playerChoice].length)];`
 
 ### Validation
 
