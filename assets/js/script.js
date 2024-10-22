@@ -111,9 +111,11 @@ const rules = {
 function getComputerChoice() {
     return choices[Math.floor(Math.random() * choices.length)];
 };
+
 // function to track scoring
-let playerScore = 0;
-let computerScore = 0;
+let playerScore = localStorage.playerScore !== undefined ? localStorage.playerScore : 0;
+let computerScore = localStorage.computerScore !== undefined ? localStorage.computerScore : 0;
+
 // function to determine the winner
 function getWinner(playerChoice, computerChoice) {
     if (playerChoice === computerChoice) {
@@ -183,13 +185,14 @@ const logScoresToLocalStorage = (winner) => {
     } 
 }
 
+const updateScoresOnPage = () => { 
+    document.getElementById("playerScore").innerHTML = playerScore;
+    document.getElementById("computerScore").innerHTML = computerScore;
+}
 
 // function to update the score and show the result
 function updateScore(winner, playerChoice, computerChoice) {
-
-
     console.log("updateScore. playerChoice = " + playerChoice + " computerChoice = " + computerChoice)
-
     if (winner === 'tie') {
         console.log("Its a tie!");
         document.getElementById("resultSay").innerHTML = "No one Wins..."
@@ -198,7 +201,10 @@ function updateScore(winner, playerChoice, computerChoice) {
         console.log("player win");
         document.getElementById("resultSay").innerHTML = "Player Wins!"
         playerScore++;
-        document.getElementById("playerScore").innerHTML = playerScore;
+        if ( localStorage.logScores === 'true'){
+            localStorage.playerScore = playerScore;
+        }
+        updateScoresOnPage();
         document.getElementById("audioCPUwin").load();
         document.getElementById("audioPlayerWin").load();
         document.getElementById("audioPlayerWin").play();
@@ -207,7 +213,10 @@ function updateScore(winner, playerChoice, computerChoice) {
         console.log("computer win");
         document.getElementById("resultSay").innerHTML = "Computer Wins!"
         computerScore++;
-        document.getElementById("computerScore").innerHTML = computerScore;
+        if (localStorage.logScores === 'true'){
+            localStorage.computerScore = computerScore;
+        }
+        updateScoresOnPage();
         document.getElementById("audioCPUwin").load();
         document.getElementById("audioPlayerWin").load();
         document.getElementById("audioCPUwin").play();
@@ -215,6 +224,7 @@ function updateScore(winner, playerChoice, computerChoice) {
     }
     logScoresToLocalStorage(winner);
 };
+
 //event listeners for player choice buttons
 document.querySelectorAll(".choiceButton").forEach(button => {
     button.addEventListener("click", function() {
@@ -231,15 +241,22 @@ document.querySelectorAll(".choiceButton").forEach(button => {
 });
 
 const updateUsernameOnScreen = (username) => {
+    console.log(`username is ${username}`);
+    console.log(`localstorage username is ${localStorage.username}`);
+    const playerUsername = document.querySelector("#playerUsername");
     if ( localStorage.username !== undefined || username !== undefined){
         playerUsername.innerText = localStorage.username !== undefined ? localStorage.username : username;
         document.querySelector("#newUsername").value = localStorage.username !== undefined ? localStorage.username : username;
+    }
+    if(localStorage.username !== username) {
+        playerUsername.innerText = username;
+        document.querySelector("#newUsername").value = username;
     }
 }
 
 const createNewUsername = () => {
     const newUsername = document.querySelector("#newUsername").value;
-    const playerUsername = document.querySelector("#playerUsername");
+    // const playerUsername = document.querySelector("#playerUsername");
 
     if (newUsername.length > 15) {
         alert("Please chose a shorter username...")
