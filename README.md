@@ -13,6 +13,7 @@ Bored people.
 
 ### Wireframes
 
+
 ### User Stories
 Features in this project have been prioretized using MoSCoW.
 - **As a** user, **I want to be able to:** play a game **so that:** I derive enjoyment from it.
@@ -51,7 +52,7 @@ Features in this project have been prioretized using MoSCoW.
 - **Youtube Embeds:** ...
 - **Bootstrap:** The stack for this application is exclusively Bootstrap, and it is our largest dependency. Bootstrap enables us to create clear, pre-formatted components, and cuts down on the demands for time spent in CSS development.
 ### Accessibility
-- **...:** ...
+- **HTML Structuring:** The web application is organized into header, main and footer tags for tools such as search engines and page readers. Due to the nature of this website, 
 ### Aesthetics
 - **Bootstrap:** The components provided by Bootstrap are simple, and highly customizeable. Given the projects limitted visual design demands, this is more than a desireable amount of developmental agency.
 - **SVGs:** For the game buttons, we used Claude AI to generate SVG files for each choice's icon. These came out to be simple, fun, and small enough to imploy without dependencies.
