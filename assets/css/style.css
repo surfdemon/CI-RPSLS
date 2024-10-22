@@ -130,6 +130,12 @@ footer ul {
 }
 
 /* Cookie Message styles */
+.cookieHeader {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 #cookieMsg {
     z-index: 5;
     opacity: 0;
