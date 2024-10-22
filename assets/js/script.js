@@ -185,6 +185,8 @@ function updateScore(winner, playerChoice, computerChoice) {
         document.getElementById("resultSay").innerHTML = "Player Wins!"
         playerScore++;
         document.getElementById("playerScore").innerHTML = playerScore;
+        document.getElementById("audioCPUwin").load();
+        document.getElementById("audioPlayerWin").load();
         document.getElementById("audioPlayerWin").play();
         document.getElementById("CPUsay").innerHTML = CPUverbs.defeat[Math.floor(Math.random()*CPUverbs.defeat.length)];
     } else {
@@ -192,6 +194,8 @@ function updateScore(winner, playerChoice, computerChoice) {
         document.getElementById("resultSay").innerHTML = "Computer Wins!"
         computerScore++;
         document.getElementById("computerScore").innerHTML = computerScore;
+        document.getElementById("audioCPUwin").load();
+        document.getElementById("audioPlayerWin").load();
         document.getElementById("audioCPUwin").play();
         document.getElementById("CPUsay").innerHTML = CPUverbs[playerChoice][Math.floor(Math.random()*CPUverbs[playerChoice].length)];
     }
