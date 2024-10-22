@@ -136,6 +136,8 @@ footer ul {
     pointer-events: none;
     transform: scale(0.8);
     transition: all 0.5s ease;
+    position: relative; 
+    top: -125px;
 } 
 
 .showCookieMsg {
@@ -146,6 +148,8 @@ footer ul {
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2) !important;
     text-align: center !important;
     pointer-events: all !important;
+    position: absolute !important;
+    top: 0px !important;
 }
 
 .cookieButton {
@@ -176,6 +180,13 @@ footer ul {
     filter: blur(4px);
 }
 
+.hidden { 
+    display: none !important;
+}
+
+.show {
+    display: block !important;
+}
 
 @media screen and (max-width:992px  ){
     #gameArea { 
