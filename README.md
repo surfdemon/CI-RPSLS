@@ -1,11 +1,12 @@
 #  Rock, Paper, Scissors, Lizard, Spock: a web-based game.
 ## Overview
-**Live link:** 
+**Live link:** https://surfdemon.github.io/CI_Rock_Paper_Scissors_Lizard_Spock/
+ 
 ### Rules
 <img src="assets/images/rules.png" alt="rules" height="250px">
 
 ### Purpose
-A web-based, fully functional game, where Users go against our code in games of Rock, Paper, Scissors, Lizard, Spock.
+A web-based, fully functional game, where Users go against our code in games of Rock, Paper, Scissors, Lizard, Spock. It generates a response to one of the five moves, and compares it to the user's inputted move using game rules to determine a winner.
 
 ### Target Audience
 Bored people.
