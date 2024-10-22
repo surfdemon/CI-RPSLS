@@ -131,6 +131,7 @@ footer ul {
 
 /* Cookie Message styles */
 #cookieMsg {
+    z-index: 5;
     opacity: 0;
     pointer-events: none;
     transform: scale(0.8);
@@ -170,6 +171,11 @@ footer ul {
     border-color: #010811;
     color: #fff;
 }
+
+.cookieMessageBlur {
+    filter: blur(4px);
+}
+
 
 @media screen and (max-width:992px  ){
     #gameArea { 
