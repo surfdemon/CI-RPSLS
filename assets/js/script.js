@@ -168,18 +168,19 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 })
 
-const logScoresToLocalStorage = (winner) => { 
+const logScoresToLocalStorage = (winner, cpuSay) => { 
     if ( localStorage.logScores === 'true' ){ 
         let scoreHistory = JSON.parse(localStorage.getItem('scoreHistory'));
         if (scoreHistory !== null){ 
+            console.log(`localStorage.username is ${localStorage.username}`);
             if ( localStorage.username !== undefined && winner === 'player' ){
-                scoreHistory.push(localStorage.username);
+                scoreHistory.push({'winner': localStorage.username, 'quip': cpuSay, 'playerScore': playerScore, 'computerScore': computerScore});
             } else {
-                scoreHistory.push(winner);
+                scoreHistory.push({'winner': winner, 'quip': cpuSay, 'playerScore': playerScore, 'computerScore': computerScore});
             }
             localStorage.setItem('scoreHistory', JSON.stringify(scoreHistory));
         } else { 
-            scoreHistory = [winner];
+            scoreHistory = [{'winner': winner, 'quip': cpuSay, 'playerScore': playerScore, 'computerScore': computerScore}];
             localStorage.setItem('scoreHistory', JSON.stringify(scoreHistory));
         }
     } 
@@ -193,10 +194,12 @@ const updateScoresOnPage = () => {
 // function to update the score and show the result
 function updateScore(winner, playerChoice, computerChoice) {
     console.log("updateScore. playerChoice = " + playerChoice + " computerChoice = " + computerChoice)
+    let cpuSay;
     if (winner === 'tie') {
         console.log("Its a tie!");
         document.getElementById("resultSay").innerHTML = "No one Wins..."
-        document.getElementById("CPUsay").innerHTML = CPUverbs.tie[Math.floor(Math.random()*CPUverbs.tie.length)];
+        cpuSay = CPUverbs.tie[Math.floor(Math.random()*CPUverbs.tie.length)];
+        document.getElementById("CPUsay").innerHTML = cpuSay;
     } else if (winner === 'player') {
         console.log("player win");
         document.getElementById("resultSay").innerHTML = "Player Wins!"
@@ -208,7 +211,8 @@ function updateScore(winner, playerChoice, computerChoice) {
         document.getElementById("audioCPUwin").load();
         document.getElementById("audioPlayerWin").load();
         document.getElementById("audioPlayerWin").play();
-        document.getElementById("CPUsay").innerHTML = CPUverbs.defeat[Math.floor(Math.random()*CPUverbs.defeat.length)];
+        cpuSay = CPUverbs.defeat[Math.floor(Math.random()*CPUverbs.defeat.length)];
+        document.getElementById("CPUsay").innerHTML = cpuSay;
     } else {
         console.log("computer win");
         document.getElementById("resultSay").innerHTML = "Computer Wins!"
@@ -220,9 +224,10 @@ function updateScore(winner, playerChoice, computerChoice) {
         document.getElementById("audioCPUwin").load();
         document.getElementById("audioPlayerWin").load();
         document.getElementById("audioCPUwin").play();
-        document.getElementById("CPUsay").innerHTML = CPUverbs[playerChoice][Math.floor(Math.random()*CPUverbs[playerChoice].length)];
+        cpuSay = CPUverbs[playerChoice][Math.floor(Math.random()*CPUverbs[playerChoice].length)];
+        document.getElementById("CPUsay").innerHTML = cpuSay;
     }
-    logScoresToLocalStorage(winner);
+    logScoresToLocalStorage(winner, cpuSay);
 };
 
 //event listeners for player choice buttons
@@ -243,6 +248,9 @@ document.querySelectorAll(".choiceButton").forEach(button => {
 const updateUsernameOnScreen = (username) => {
     console.log(`username is ${username}`);
     console.log(`localstorage username is ${localStorage.username}`);
+    if (username !== undefined && localStorage.username === undefined){
+        localStorage.username = username;
+    }
     const playerUsername = document.querySelector("#playerUsername");
     if ( localStorage.username !== undefined || username !== undefined){
         playerUsername.innerText = localStorage.username !== undefined ? localStorage.username : username;
@@ -277,3 +285,7 @@ document.getElementById("newUsername").addEventListener("keydown", function(even
         createNewUsername();
     }
 })
+
+const updateHistoryLog = (winner, quip, playerScore, computerScore) => { 
+
+}
