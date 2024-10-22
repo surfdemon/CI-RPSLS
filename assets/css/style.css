@@ -153,6 +153,7 @@ footer ul {
     border-radius: 5px;
     width: 90px;
     height: 55px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2)
 }
 
 .cookieButton:hover {
