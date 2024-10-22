@@ -1,3 +1,5 @@
+let logScores = true; 
+
 // QUIPS
 const quipsDefeat = [ // CPU if player wins
     "Live long and prosper.",
@@ -94,8 +96,52 @@ function getWinner(playerChoice, computerChoice) {
         return 'computer'
     }
 };
+
+
+
+
+const showCookieMsg = () => {
+    document.getElementById('cookieMsg').classList.add('showCookieMsg');
+}
+
+document.addEventListener('DOMContentLoaded', () => { 
+    if ( document.cookies == "logscores"){
+        console.log('should be logging the scores!');
+        logScores = true;
+    } else if ( document.cookies == "nologs") { 
+        console.log('should not log the scores');
+        logScores = false;
+    } else {
+        console.log('need to show the cookie msg');
+        showCookieMsg();
+    }
+})
+
+const logScoresToLocalStorage = (winner) => { 
+    console.log('log scores to local storage has run');
+    if ( logScores == true ){ 
+        let scoreHistory = JSON.parse(localStorage.getItem('scoreHistory'));
+        if (scoreHistory !== null){ 
+            scoreHistory.push(winner);
+            localStorage.setItem('scoreHistory', JSON.stringify(scoreHistory));
+            console.log(`we have score history! ${scoreHistory}`);
+        } else { 
+            scoreHistory = [winner];
+            localStorage.setItem('scoreHistory', JSON.stringify(scoreHistory));
+            console.log('There is no score history');
+        }
+    } else { 
+        console.log('logscores is false');
+    }
+}
+
+
+
+
 // function to update the score and show the result
 function updateScore(winner, playerChoice, computerChoice) {
+
+
     console.log("updateScore. playerChoice = " + playerChoice + " computerChoice = " + computerChoice)
 
     if (winner === 'tie') {
@@ -117,6 +163,7 @@ function updateScore(winner, playerChoice, computerChoice) {
         document.getElementById("audioCPUwin").play();
         document.getElementById("CPUsay").innerHTML = CPUverbs[playerChoice][Math.floor(Math.random()*CPUverbs[playerChoice].length)];
     }
+    logScoresToLocalStorage(winner);
 };
 //event listeners for player choice buttons
 document.querySelectorAll(".choiceButton").forEach(button => {
@@ -131,7 +178,4 @@ document.querySelectorAll(".choiceButton").forEach(button => {
 
     });
 });
-
-
-
 
