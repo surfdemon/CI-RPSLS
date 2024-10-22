@@ -33,6 +33,10 @@ body{
     min-width: 450px;
 }
 
+svg{
+    width: 100% 
+}
+
 .scoreArea { 
     font-weight:bolder;
 }
