@@ -1,4 +1,4 @@
-let logScores = true; 
+var logScores = true; 
 
 // QUIPS
 const quipsDefeat = [ // CPU if player wins
@@ -76,6 +76,25 @@ const CPUverbs = {
     tie: quipsTie
 }
 // QUIPS ENDS
+// AUDIO CONTROL
+function toggleMuteAudio() {
+    var soundBtn = document.getElementById("audioBtnClick");
+    var soundCPU = document.getElementById("audioCPUwin");
+    var soundPla = document.getElementById("audioPlayerWin");
+    console.log('toggle mute');
+if (soundBtn.muted === true) {
+    soundBtn.muted = false;
+    soundCPU.muted = false;
+    soundPla.muted = false;
+    console.log('on');
+} else {
+    soundBtn.muted = true;
+    soundCPU.muted = true;
+    soundPla.muted = true;
+    console.log('off');
+}};
+toggleMuteAudio(); // mutes audio on boot-up
+// AUDIO CONTROL ENDS
 
 const choices = ["rock", "paper", "scissors", "lizard", "spock"];
 const rules = {
@@ -113,36 +132,38 @@ const showCookieMsg = () => {
 
 document.addEventListener('DOMContentLoaded', () => { 
     if ( document.cookies == "logscores"){
-        console.log('should be logging the scores!');
         logScores = true;
     } else if ( document.cookies == "nologs") { 
-        console.log('should not log the scores');
         logScores = false;
     } else {
         console.log('need to show the cookie msg');
-        showCookieMsg();
+        //showCookieMsg();
+    }
+
+    let username = localStorage.username;
+    if (username !== undefined){
+        updateUsernameOnScreen(username);
     }
 })
 
 const logScoresToLocalStorage = (winner) => { 
-    console.log('log scores to local storage has run');
     if ( logScores == true ){ 
         let scoreHistory = JSON.parse(localStorage.getItem('scoreHistory'));
         if (scoreHistory !== null){ 
-            scoreHistory.push(winner);
+            if ( localStorage.username !== undefined && winner === 'player' ){
+                scoreHistory.push(localStorage.username);
+            } else {
+                scoreHistory.push(winner);
+            }
             localStorage.setItem('scoreHistory', JSON.stringify(scoreHistory));
-            console.log(`we have score history! ${scoreHistory}`);
         } else { 
             scoreHistory = [winner];
             localStorage.setItem('scoreHistory', JSON.stringify(scoreHistory));
-            console.log('There is no score history');
         }
-    } else { 
+    } else {
         console.log('logscores is false');
     }
 }
-
-
 
 
 // function to update the score and show the result
@@ -180,9 +201,37 @@ document.querySelectorAll(".choiceButton").forEach(button => {
         document.getElementById("audioBtnClick").play();
 
         // Show choices and result
-        updateScore(getWinner(playerChoice, computerChoice), playerChoice, computerChoice);
+        document.getElementById("plaChoice").innerHTML = `${playerChoice}`
         document.getElementById("choiceSay").innerHTML = `You chose ${playerChoice}, Computer chose ${computerChoice}`;
-
+        updateScore(getWinner(playerChoice, computerChoice), playerChoice, computerChoice);
     });
 });
 
+const updateUsernameOnScreen = (username) => {
+    playerUsername.innerText = username;
+    document.querySelector("#newUsername").value = username;
+}
+
+const createNewUsername = () => {
+    const newUsername = document.querySelector("#newUsername").value;
+    const playerUsername = document.querySelector("#playerUsername");
+
+    if (newUsername.length > 15) {
+        alert("Please chose a shorter username...")
+    } else {
+        updateUsernameOnScreen(newUsername)
+        if ( logScores == true ){     
+            localStorage.username = newUsername;
+        } 
+    }
+}
+
+document.getElementById("submitUsername").addEventListener("click", createNewUsername)
+
+document.getElementById("newUsername").addEventListener("keydown", function(event) {
+
+    if (event.key === "Enter") {
+        event.preventDefault();
+        createNewUsername();
+    }
+})
