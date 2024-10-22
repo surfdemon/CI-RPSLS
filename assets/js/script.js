@@ -199,9 +199,9 @@ document.querySelectorAll(".choiceButton").forEach(button => {
         document.getElementById("audioBtnClick").play();
 
         // Show choices and result
-        updateScore(getWinner(playerChoice, computerChoice), playerChoice, computerChoice);
+        document.getElementById("plaChoice").innerHTML = `${playerChoice}`
         document.getElementById("choiceSay").innerHTML = `You chose ${playerChoice}, Computer chose ${computerChoice}`;
-
+        updateScore(getWinner(playerChoice, computerChoice), playerChoice, computerChoice);
     });
 });
 
