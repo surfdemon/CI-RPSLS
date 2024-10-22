@@ -231,8 +231,10 @@ document.querySelectorAll(".choiceButton").forEach(button => {
 });
 
 const updateUsernameOnScreen = (username) => {
-    playerUsername.innerText = localStorage.username ? localStorage.username : username;
-    document.querySelector("#newUsername").value = localStorage.username ? localStorage.username : username;
+    if ( localStorage.username !== undefined || username !== undefined){
+        playerUsername.innerText = localStorage.username !== undefined ? localStorage.username : username;
+        document.querySelector("#newUsername").value = localStorage.username !== undefined ? localStorage.username : username;
+    }
 }
 
 const createNewUsername = () => {
