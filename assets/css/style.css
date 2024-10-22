@@ -28,16 +28,9 @@ body{
 }
 
 /* Game Area */ 
-#gameArea { 
-    background-color: blue;
-}
 
-#playerArea { 
-    background-color: orange;
-}
-
-#computerArea { 
-    background-color: yellow;
+#playerArea, #computerArea { 
+    min-width: 450px;
 }
 
 .scoreArea { 
@@ -130,4 +123,27 @@ footer ul {
 
 .footerAnchor {
     text-decoration: none;
+}
+
+@media screen and (max-width:992px  ){
+    #gameArea { 
+        flex-direction: column;
+    }
+
+    #playerArea, #computerArea{ 
+        margin-top: 50px;
+        min-width: 100%;
+    }
+}
+
+@media screen and (max-width: 400px){ 
+    svg{ 
+        width: 100%;
+    }
+}
+
+@media screen and (max-height: 1253px){ 
+    footer{ 
+        position: relative;
+    }
 }
