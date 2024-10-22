@@ -1,5 +1,3 @@
-var logScores = true; 
-
 // QUIPS
 const quipsDefeat = [ // CPU if player wins
     "Live long and prosper.",
@@ -77,7 +75,8 @@ const CPUverbs = {
 }
 // QUIPS ENDS
 // AUDIO CONTROL
-var toggleMuteAudio = () => {
+const toggleMuteAudio = () => {
+    var muteBtn = document.getElementById('btnMute');
     var soundBtn = document.getElementById("audioBtnClick");
     var soundCPU = document.getElementById("audioCPUwin");
     var soundPla = document.getElementById("audioPlayerWin");
@@ -126,32 +125,49 @@ function getWinner(playerChoice, computerChoice) {
     }
 };
 
+const showUserForm = () => {
+    document.getElementById('submitUsername').classList.add('show');
+    document.getElementById('newUsername').classList.add('show');
+}
 
+const cookiesAccepted = () => { 
+    localStorage.logScores = true;
+    updateUsernameOnScreen();
+    showUserForm();
+    hideCookieMsg();
+}
 
+const cookiesRejected = () => {
+    hideCookieMsg();
+}
 
 const showCookieMsg = () => {
     document.getElementById('cookieMsg').classList.add('showCookieMsg');
 }
 
+const hideCookieMsg = () => {
+    document.getElementById('cookieMsg').classList.remove('showCookieMsg');
+}
+
+
 document.addEventListener('DOMContentLoaded', () => { 
     document.getElementById('btnMute').addEventListener('click', toggleMuteAudio);
-    if ( document.cookies == "logscores"){
-        logScores = true;
-    } else if ( document.cookies == "nologs") { 
-        logScores = false;
-    } else {
-        console.log('need to show the cookie msg');
-        //showCookieMsg();
+    document.getElementById('cookieButtonAccept').addEventListener('click', cookiesAccepted);
+    document.getElementById('cookieButtonReject').addEventListener('click', cookiesRejected);
+    if ( localStorage.logScores !== 'true' ) { 
+        showCookieMsg();
+    } else { 
+        showUserForm();
     }
 
     let username = localStorage.username;
-    if (username !== undefined){
+    if (username !== undefined && localStorage.logScores === 'true' ){
         updateUsernameOnScreen(username);
     }
 })
 
 const logScoresToLocalStorage = (winner) => { 
-    if ( logScores == true ){ 
+    if ( localStorage.logScores === 'true' ){ 
         let scoreHistory = JSON.parse(localStorage.getItem('scoreHistory'));
         if (scoreHistory !== null){ 
             if ( localStorage.username !== undefined && winner === 'player' ){
@@ -164,9 +180,7 @@ const logScoresToLocalStorage = (winner) => {
             scoreHistory = [winner];
             localStorage.setItem('scoreHistory', JSON.stringify(scoreHistory));
         }
-    } else {
-        console.log('logscores is false');
-    }
+    } 
 }
 
 
@@ -217,8 +231,10 @@ document.querySelectorAll(".choiceButton").forEach(button => {
 });
 
 const updateUsernameOnScreen = (username) => {
-    playerUsername.innerText = username;
-    document.querySelector("#newUsername").value = username;
+    if ( localStorage.username !== undefined || username !== undefined){
+        playerUsername.innerText = localStorage.username !== undefined ? localStorage.username : username;
+        document.querySelector("#newUsername").value = localStorage.username !== undefined ? localStorage.username : username;
+    }
 }
 
 const createNewUsername = () => {
@@ -229,7 +245,7 @@ const createNewUsername = () => {
         alert("Please chose a shorter username...")
     } else {
         updateUsernameOnScreen(newUsername)
-        if ( logScores == true ){     
+        if ( localStorage.logScores === 'true' ){     
             localStorage.username = newUsername;
         } 
     }
