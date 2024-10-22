@@ -81,6 +81,7 @@ var toggleMuteAudio = () => {
     var soundBtn = document.getElementById("audioBtnClick");
     var soundCPU = document.getElementById("audioCPUwin");
     var soundPla = document.getElementById("audioPlayerWin");
+    var muteBtn = document.getElementById("btnMute");
     console.log('toggle mute');
 if (soundBtn.muted === true) {
     muteBtn.innerHTML = "Unmuted"
