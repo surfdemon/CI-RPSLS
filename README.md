@@ -12,7 +12,7 @@ A web-based, fully functional game, where Users go against our code in games of 
 Bored people.
 
 ### Wireframes
-<img src="assets/images/RPSLS-wireframe.png" alt="wireframe">
+<img src="assets/images/RPSLS-wireframe.png" alt="wireframe" width="50%">
 
 ### User Stories
 Features in this project have been prioretized using MoSCoW.
