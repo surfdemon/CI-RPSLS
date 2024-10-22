@@ -106,12 +106,14 @@ function updateScore(winner, playerChoice, computerChoice) {
         console.log("player win");
         document.getElementById("resultSay").innerHTML = "Player Wins!"
         playerScore++;
+        document.getElementById("playerScore").innerHTML = playerScore;
         document.getElementById("audioPlayerWin").play();
         document.getElementById("CPUsay").innerHTML = CPUverbs.defeat[Math.floor(Math.random()*CPUverbs.defeat.length)];
     } else {
         console.log("computer win");
         document.getElementById("resultSay").innerHTML = "Computer Wins!"
         computerScore++;
+        document.getElementById("computerScore").innerHTML = computerScore;
         document.getElementById("audioCPUwin").play();
         document.getElementById("CPUsay").innerHTML = CPUverbs[playerChoice][Math.floor(Math.random()*CPUverbs[playerChoice].length)];
     }
