@@ -2,51 +2,58 @@
 const quipsDefeat = [ // CPU if player wins
     "Live long and prosper.",
     "That move was... illogical. Well done!",
-    "I am defeated."
+    "I am defeated.",
+    "Well player.",
+    "Bested? By a human!?"
 
 ];
 
 const quipsTie = [ // CPU draw
     "An impass.",
     "Stalemates are unavoidable",
-    "You played logically. So did I."
+    "You played logically. So did I.",
+    "This only delays the inevitable.",
+    "What are the odds? They're 20%."
 
 ]
 
 const quips = [ // general CPU win
-    "You let your emotions cloud your judgement.",
-    "I am of a superior intellect.",
-    "You are defeated."
+    "You are defeated.",
 
 ];
 
 const quipsRock = [ // CPU win against rock
     "Such a primative instrument.",
-    "Perhaps build a build a wall with it next time."
+    "Perhaps build a wall with it next time.",
+    "Your civilization has yet evolved beyond stone?"
 
 ];
 
 const quipsPaper = [ // CPU win against paper
     "Your defence was... fickle.",
-    "Paper? At a moment like this?"
+    "Paper? At a moment like this?",
+    "We use datapads in the 25th century."
 
 ];
 
 const quipsScissors = [ // CPU win against scissors
     "The choice of a blade was obvious... too obvious.",
-    "A bold time to assume the offense. Foolish all the same."
+    "A bold time to assume the offense. Foolish all the same.",
+    "En Garde!"
 
 ];
 
 const quipsLizard = [ // CPU win against lizard
     "I have rendered your reptile inert.",
-    "Your lizard, my friend, is dead."
+    "Your lizard, my friend, is dead.",
+    "It hissed at me. I killed the beast..."
 
 ];
 
 const quipsSpock = [ // CPU win against spock
     "Of all the souls I have encountered in my travels, his was the most human.",
-    "You will serve under me yet, Spock."
+    "You will serve under me yet, Spock.",
+    "Perhaps send a search party for him?"
 
 ];
 
