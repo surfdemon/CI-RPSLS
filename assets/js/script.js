@@ -1,4 +1,4 @@
-var logScores = true; 
+var logScores = true;
 
 // QUIPS
 const quipsDefeat = [ // CPU if player wins
@@ -83,19 +83,20 @@ var toggleMuteAudio = () => {
     var soundPla = document.getElementById("audioPlayerWin");
     var muteBtn = document.getElementById("btnMute");
     console.log('toggle mute');
-if (soundBtn.muted === true) {
-    muteBtn.innerHTML = "Unmuted"
-    soundBtn.muted = false;
-    soundCPU.muted = false;
-    soundPla.muted = false;
-    console.log('on');
-} else {
-    muteBtn.innerHTML = "Muted"
-    soundBtn.muted = true;
-    soundCPU.muted = true;
-    soundPla.muted = true;
-    console.log('off');
-}};
+    if (soundBtn.muted === true) {
+        muteBtn.innerHTML = "Unmuted"
+        soundBtn.muted = false;
+        soundCPU.muted = false;
+        soundPla.muted = false;
+        console.log('on');
+    } else {
+        muteBtn.innerHTML = "Muted"
+        soundBtn.muted = true;
+        soundCPU.muted = true;
+        soundPla.muted = true;
+        console.log('off');
+    }
+};
 toggleMuteAudio(); // mutes audio on boot-up
 // AUDIO CONTROL ENDS
 
@@ -133,11 +134,11 @@ const showCookieMsg = () => {
     document.getElementById('cookieMsg').classList.add('showCookieMsg');
 }
 
-document.addEventListener('DOMContentLoaded', () => { 
+document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('btnMute').addEventListener('click', toggleMuteAudio);
-    if ( document.cookies == "logscores"){
+    if (document.cookies == "logscores") {
         logScores = true;
-    } else if ( document.cookies == "nologs") { 
+    } else if (document.cookies == "nologs") {
         logScores = false;
     } else {
         console.log('need to show the cookie msg');
@@ -145,22 +146,22 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     let username = localStorage.username;
-    if (username !== undefined){
+    if (username !== undefined) {
         updateUsernameOnScreen(username);
     }
 })
 
-const logScoresToLocalStorage = (winner) => { 
-    if ( logScores == true ){ 
+const logScoresToLocalStorage = (winner) => {
+    if (logScores == true) {
         let scoreHistory = JSON.parse(localStorage.getItem('scoreHistory'));
-        if (scoreHistory !== null){ 
-            if ( localStorage.username !== undefined && winner === 'player' ){
+        if (scoreHistory !== null) {
+            if (localStorage.username !== undefined && winner === 'player') {
                 scoreHistory.push(localStorage.username);
             } else {
                 scoreHistory.push(winner);
             }
             localStorage.setItem('scoreHistory', JSON.stringify(scoreHistory));
-        } else { 
+        } else {
             scoreHistory = [winner];
             localStorage.setItem('scoreHistory', JSON.stringify(scoreHistory));
         }
@@ -179,7 +180,7 @@ function updateScore(winner, playerChoice, computerChoice) {
     if (winner === 'tie') {
         console.log("Its a tie!");
         document.getElementById("resultSay").innerHTML = "No one Wins..."
-        document.getElementById("CPUsay").innerHTML = CPUverbs.tie[Math.floor(Math.random()*CPUverbs.tie.length)];
+        document.getElementById("CPUsay").innerHTML = CPUverbs.tie[Math.floor(Math.random() * CPUverbs.tie.length)];
     } else if (winner === 'player') {
         console.log("player win");
         document.getElementById("resultSay").innerHTML = "Player Wins!"
@@ -188,7 +189,7 @@ function updateScore(winner, playerChoice, computerChoice) {
         document.getElementById("audioCPUwin").load();
         document.getElementById("audioPlayerWin").load();
         document.getElementById("audioPlayerWin").play();
-        document.getElementById("CPUsay").innerHTML = CPUverbs.defeat[Math.floor(Math.random()*CPUverbs.defeat.length)];
+        document.getElementById("CPUsay").innerHTML = CPUverbs.defeat[Math.floor(Math.random() * CPUverbs.defeat.length)];
     } else {
         console.log("computer win");
         document.getElementById("resultSay").innerHTML = "Computer Wins!"
@@ -197,13 +198,13 @@ function updateScore(winner, playerChoice, computerChoice) {
         document.getElementById("audioCPUwin").load();
         document.getElementById("audioPlayerWin").load();
         document.getElementById("audioCPUwin").play();
-        document.getElementById("CPUsay").innerHTML = CPUverbs[playerChoice][Math.floor(Math.random()*CPUverbs[playerChoice].length)];
+        document.getElementById("CPUsay").innerHTML = CPUverbs[playerChoice][Math.floor(Math.random() * CPUverbs[playerChoice].length)];
     }
     logScoresToLocalStorage(winner);
 };
 //event listeners for player choice buttons
 document.querySelectorAll(".choiceButton").forEach(button => {
-    button.addEventListener("click", function() {
+    button.addEventListener("click", function () {
         const playerChoice = this.getAttribute("data-type");
         const computerChoice = getComputerChoice();
         document.getElementById("audioBtnClick").load();
@@ -229,15 +230,15 @@ const createNewUsername = () => {
         alert("Please chose a shorter username...")
     } else {
         updateUsernameOnScreen(newUsername)
-        if ( logScores == true ){     
+        if (logScores == true) {
             localStorage.username = newUsername;
-        } 
+        }
     }
 }
 
 document.getElementById("submitUsername").addEventListener("click", createNewUsername)
 
-document.getElementById("newUsername").addEventListener("keydown", function(event) {
+document.getElementById("newUsername").addEventListener("keydown", function (event) {
 
     if (event.key === "Enter") {
         event.preventDefault();
