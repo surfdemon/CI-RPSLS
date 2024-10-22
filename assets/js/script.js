@@ -3,7 +3,7 @@ const quipsDefeat = [ // CPU if player wins
     "Live long and prosper.",
     "That move was... illogical. Well done!",
     "I am defeated.",
-    "Well player.",
+    "Well played.",
     "Bested? By a human!?"
 
 ];
