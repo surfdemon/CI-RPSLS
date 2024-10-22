@@ -129,6 +129,16 @@ footer ul {
     text-decoration: none;
 }
 
+/* Cookie Message styles */
+#cookieMsg {
+    width: 100px;
+    height: 100px;
+}
+
+.showCookieMsg {
+    display: block !important;
+}
+
 @media screen and (max-width:992px  ){
     #gameArea { 
         flex-direction: column;
