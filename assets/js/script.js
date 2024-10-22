@@ -73,19 +73,16 @@ const toggleMuteAudio = () => {
     var soundCPU = document.getElementById("audioCPUwin");
     var soundPla = document.getElementById("audioPlayerWin");
     var muteBtn = document.getElementById("btnMute");
-    console.log('toggle mute');
 if (soundBtn.muted === true) {
     muteBtn.innerHTML = "Unmuted"
     soundBtn.muted = false;
     soundCPU.muted = false;
     soundPla.muted = false;
-    console.log('on');
 } else {
     muteBtn.innerHTML = "Muted"
     soundBtn.muted = true;
     soundCPU.muted = true;
     soundPla.muted = true;
-    console.log('off');
 }};
 toggleMuteAudio(); // mutes audio on boot-up
 // AUDIO CONTROL ENDS
@@ -164,7 +161,6 @@ const logScoresToLocalStorage = (winner, cpuSay) => {
     if ( localStorage.logScores === 'true' ){ 
         let scoreHistory = JSON.parse(localStorage.getItem('scoreHistory'));
         if (scoreHistory !== null){ 
-            console.log(`localStorage.username is ${localStorage.username}`);
             if ( localStorage.username !== undefined && winner === 'player' ){
                 scoreHistory.push({'winner': localStorage.username, 'quip': cpuSay, 'playerScore': playerScore, 'computerScore': computerScore});
             } else {
@@ -185,16 +181,13 @@ const updateScoresOnPage = () => {
 
 // function to update the score and show the result
 function updateScore(winner, playerChoice, computerChoice) {
-    console.log("updateScore. playerChoice = " + playerChoice + " computerChoice = " + computerChoice)
     showComputerChoice(computerChoice);
     let cpuSay;
     if (winner === 'tie') {
-        console.log("Its a tie!");
         document.getElementById("resultSay").innerHTML = "No one Wins..."
         cpuSay = CPUverbs.tie[Math.floor(Math.random()*CPUverbs.tie.length)];
         document.getElementById("CPUsay").innerHTML = cpuSay;
     } else if (winner === 'player') {
-        console.log("player win");
         document.getElementById("resultSay").innerHTML = "Player Wins!"
         playerScore++;
         if ( localStorage.logScores === 'true'){
@@ -207,7 +200,6 @@ function updateScore(winner, playerChoice, computerChoice) {
         cpuSay = CPUverbs.defeat[Math.floor(Math.random()*CPUverbs.defeat.length)];
         document.getElementById("CPUsay").innerHTML = cpuSay;
     } else {
-        console.log("computer win");
         document.getElementById("resultSay").innerHTML = "Computer Wins!"
         computerScore++;
         if (localStorage.logScores === 'true'){
@@ -239,14 +231,11 @@ document.querySelectorAll(".choiceButton").forEach(button => {
 });
 
 const showComputerChoice = (computerChoice) => { 
-    console.log(`computerChoice is ${computerChoice}`);
     document.getElementById(`${computerChoice}TargetComputer`).classList.add('show');
     setTimeout(() =>{ document.getElementById(`${computerChoice}TargetComputer`).classList.remove('show') }, 2000);
 }
 
 const updateUsernameOnScreen = (username) => {
-    console.log(`username is ${username}`);
-    console.log(`localstorage username is ${localStorage.username}`);
     if (username !== undefined && localStorage.username === undefined){
         localStorage.username = username;
     }
