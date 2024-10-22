@@ -56,6 +56,8 @@ svg{
     font-weight: 600;
     letter-spacing: 2px;
     margin-left: 10px;
+    margin-bottom: 10px;
+    margin-top: 10px;
 }
 
 .btnUsernameSubmit:hover {
@@ -74,6 +76,8 @@ svg{
     letter-spacing: 2px;
     margin-left: 10px;
     margin-right: 10px;
+    margin-bottom: 10px;
+    margin-top: 10px;
 }
 
 #btnMute:hover {
