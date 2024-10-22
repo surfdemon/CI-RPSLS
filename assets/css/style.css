@@ -55,6 +55,7 @@ svg{
     border: 1px solid var(--accent-color);
     font-weight: 600;
     letter-spacing: 2px;
+    margin-left: 10px;
 }
 
 .btnUsernameSubmit:hover {
