@@ -219,6 +219,7 @@ function updateScore(winner, playerChoice, computerChoice) {
         document.getElementById("CPUsay").innerHTML = cpuSay;
     }
     logScoresToLocalStorage(winner, cpuSay);
+    updateHistoryLog(winner, cpuSay, localStorage.playerScore, localStorage.computerScore);
 };
 
 //event listeners for player choice buttons
@@ -280,5 +281,8 @@ document.getElementById("newUsername").addEventListener("keydown", function(even
 })
 
 const updateHistoryLog = (winner, quip, playerScore, computerScore) => { 
-
+    let log = document.getElementsByClassName('log')[0];
+    let logEntry = "<p><b>(" +  playerScore + ":" +  computerScore + ")</b> " + winner + " wins</p><p></p><p>" + quip + "</p>";
+    log.innerHTML = log.innerHTML + logEntry;
+    console.log(logEntry);
 }
