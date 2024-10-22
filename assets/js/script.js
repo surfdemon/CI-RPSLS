@@ -77,7 +77,7 @@ const CPUverbs = {
 }
 // QUIPS ENDS
 // AUDIO CONTROL
-function toggleMuteAudio() {
+var toggleMuteAudio = () => {
     var soundBtn = document.getElementById("audioBtnClick");
     var soundCPU = document.getElementById("audioCPUwin");
     var soundPla = document.getElementById("audioPlayerWin");
@@ -131,6 +131,7 @@ const showCookieMsg = () => {
 }
 
 document.addEventListener('DOMContentLoaded', () => { 
+    document.getElementById('btnMute').addEventListener('click', toggleMuteAudio);
     if ( document.cookies == "logscores"){
         logScores = true;
     } else if ( document.cookies == "nologs") { 
