@@ -55,6 +55,9 @@ svg{
     border: 1px solid var(--accent-color);
     font-weight: 600;
     letter-spacing: 2px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+    margin-top: 10px;
 }
 
 .btnUsernameSubmit:hover {
@@ -64,6 +67,21 @@ svg{
 .navbar-nav li {
     cursor: pointer;
     letter-spacing: 1px;
+}
+
+#btnMute {
+    color: var(--txt-color);
+    border: 1px solid var(--txt-color);
+    font-weight: 600;
+    letter-spacing: 2px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+#btnMute:hover {
+    background-color: var(--accent-color);
 }
 
 /* modal styles */
