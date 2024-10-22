@@ -206,6 +206,7 @@ document.querySelectorAll(".choiceButton").forEach(button => {
     button.addEventListener("click", function() {
         const playerChoice = this.getAttribute("data-type");
         const computerChoice = getComputerChoice();
+        document.getElementById("audioBtnClick").load();
         document.getElementById("audioBtnClick").play();
 
         // Show choices and result
