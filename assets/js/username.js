@@ -1,4 +1,4 @@
-// code for inputting username.
+// code for inputting username. Needs adding to scripts.js
 const createNewUsername = () => {
     const newUsername = document.querySelector("#newUsername").value;
     const playerUsername = document.querySelector("#playerUsername");
