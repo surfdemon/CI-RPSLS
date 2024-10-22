@@ -31,9 +31,6 @@
     <!-- Page Title -->
     <title>RPSLS</title>
 
-    <!-- Test useranme scripts -->
-     <script type="module" src="./assets/js/username.js"></script>
-
 </head>
 
 <body>
@@ -88,6 +85,13 @@
     </nav>
 
     <header>
+        <div id="cookieMsg" class="">
+            <h1 class="h3">Cookies?</h1>
+            <p>This website uses cookies to store your game history and username in your local storage. If you don't want to 
+                this to happen please chose the 'Reject cookies' button. Otherwise, press 'Accept cookies' and get started!</p>
+            <button class="cookieButton" id="cookieButtonAccept">Accept cookies</button>
+            <button class="cookieButton" id="cookieButtonReject">Reject cookies</button>
+        </div>
     </header>
 
     <main class="mx-auto text-center">
@@ -98,6 +102,8 @@
 
             <div id="playerArea" class="col-12 col-md-12 col-lg-4">
                 <div id="scoreArea"><strong><span id="playerUsername">Player Score</span>: <span id="playerScore">0</span></strong></div>
+
+                <div><p><i><span id="plaChoice">...</span></i></p></div>
 
                 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
                 <!-- Created with Inkscape (http://www.inkscape.org/) -->
@@ -659,10 +665,9 @@
 
             <div id="computerArea" class="col-12 col-md-12 col-lg-4">
 
-                <div><p><b>"<span id="CPUsay">Greetings. I am the computer.</span>"</b></p></div>
-
                 <div id="scoreArea"><strong>Computer Score: <span id="computerScore">0</span></strong></div>
 
+                <div><p><i>"<span id="CPUsay">Greetings. I am the computer.</span>"</i></p></div>
 
                 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
                 <!-- Created with Inkscape (http://www.inkscape.org/) -->
@@ -1371,6 +1376,7 @@
                 </div>
             </div>
         </div>
+
     </main>
 
     <div class="container">

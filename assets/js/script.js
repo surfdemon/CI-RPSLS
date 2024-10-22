@@ -83,11 +83,13 @@ var toggleMuteAudio = () => {
     var soundPla = document.getElementById("audioPlayerWin");
     console.log('toggle mute');
 if (soundBtn.muted === true) {
+    muteBtn.innerHTML = "Unmuted"
     soundBtn.muted = false;
     soundCPU.muted = false;
     soundPla.muted = false;
     console.log('on');
 } else {
+    muteBtn.innerHTML = "Muted"
     soundBtn.muted = true;
     soundCPU.muted = true;
     soundPla.muted = true;
@@ -202,9 +204,9 @@ document.querySelectorAll(".choiceButton").forEach(button => {
         document.getElementById("audioBtnClick").play();
 
         // Show choices and result
-        updateScore(getWinner(playerChoice, computerChoice), playerChoice, computerChoice);
+        document.getElementById("plaChoice").innerHTML = `${playerChoice}`
         document.getElementById("choiceSay").innerHTML = `You chose ${playerChoice}, Computer chose ${computerChoice}`;
-
+        updateScore(getWinner(playerChoice, computerChoice), playerChoice, computerChoice);
     });
 });
 
