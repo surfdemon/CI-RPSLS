@@ -129,6 +129,54 @@ footer ul {
     text-decoration: none;
 }
 
+/* Cookie Message styles */
+#cookieMsg {
+    z-index: 5;
+    opacity: 0;
+    pointer-events: none;
+    transform: scale(0.8);
+    transition: all 0.5s ease;
+} 
+
+.showCookieMsg {
+    opacity: 1 !important;
+    background: #fff !important;
+    padding: 20px !important;
+    border-radius: 15px !important;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2) !important;
+    text-align: center !important;
+    pointer-events: all !important;
+}
+
+.cookieButton {
+    margin-right: 25px;
+    margin-left: 25px;
+    border-radius: 5px;
+    width: 90px;
+    height: 55px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2)
+}
+
+.cookieButton:hover {
+    transform: scale(1.1)
+}
+
+#cookieButtonAccept {
+    background-color: var(--primary-color);
+    border-color: #2470a2;
+}
+
+#cookieButtonReject {
+    background-color: var(--txt-color);
+    border-color: #010811;
+    color: #fff;
+}
+
+.cookieMessageBlur {
+    filter: blur(4px);
+}
+
+
 @media screen and (max-width:992px  ){
     #gameArea { 
         flex-direction: column;
