@@ -144,7 +144,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('btnMute').addEventListener('click', toggleMuteAudio);
     document.getElementById('cookieButtonAccept').addEventListener('click', cookiesAccepted);
     document.getElementById('cookieButtonReject').addEventListener('click', cookiesRejected);
-    document.getElementById('btnResetGameData').addEventListener('click', resetGameData);
+    document.getElementById('confirmNewGame').addEventListener('click', resetGameData);
     if ( localStorage.logScores !== 'true' ) { 
         showCookieMsg();
     } else { 
@@ -155,7 +155,6 @@ document.addEventListener('DOMContentLoaded', () => {
         updateUsernameOnScreen(username);
     }
     populateLogHistory();
-    updateScoresOnPage();
 })
 
 const logScoresToLocalStorage = (winner, cpuSay) => { 
@@ -290,6 +289,10 @@ const populateLogHistory = () => {
     });
 }
 
+
+// This has to be outside the resetGameData function to work!
+var newGameModal = new bootstrap.Modal(document.getElementById('newGameModal'));
+
 const resetGameData = () => {
     localStorage.removeItem('scoreHistory');
     localStorage.removeItem('playerScore');
@@ -298,4 +301,6 @@ const resetGameData = () => {
     log.innerHTML = "";
     playerScore = 0;
     computerScore = 0;
+    newGameModal.hide();
+    updateScoresOnPage();
 }
