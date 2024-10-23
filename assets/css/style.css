@@ -214,10 +214,6 @@ footer ul {
 }
 
 @media screen and (min-width:992px  ){
-    body {
-        background-color: gray;
-    }
-    
     .plaSVG, .comSVG {
         height: calc(100vh - 373px);
     }
