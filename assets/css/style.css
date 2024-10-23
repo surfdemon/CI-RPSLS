@@ -176,6 +176,15 @@ footer ul {
     filter: blur(4px);
 }
 
+@media screen and (min-width:992px  ){
+    body {
+        background-color: #1b7efffb;
+    }
+
+    .plaSVG, .comSVG {
+        height: 400px;
+    }
+}
 
 @media screen and (max-width:992px  ){
     #gameArea { 
