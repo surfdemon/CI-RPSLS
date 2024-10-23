@@ -9,7 +9,7 @@
 A web-based, fully functional game, where Users go against our code in games of Rock, Paper, Scissors, Lizard, Spock. It generates a response to one of the five moves, and compares it to the user's inputted move using game rules to determine a winner.
 
 ### Target Audience
-Bored people.
+Lovers of Star Trek, The Big Bang Theory, and anyone who interacts frequently with geek space; or someone wanting to become familiar with the rules of Rock, Paper, Scissors, Lizard, Spock; or someone who knows the game, and wants to enjoy playing it against random computer generated responses.
 
 ### Wireframes
 <img src="assets/images/RPSLS-wireframe.png" alt="wireframe" width="400px" style="margin: 10px;">
@@ -70,17 +70,26 @@ Features in this project have been prioretized using MoSCoW.
 **Browser Dev Tools - Console:** By openning dev tools in the deployment, or local port of our working branches using python3's http.server method in gitpod, we were able to view the console, and see where syntax errors were occuring in our script.js file.
 
 For example, the computer dialogue options are stored in arrays that are randomly selected from, and the arrays are stored in one object. In initially writing the line of code responsible for fetching the computer's dialogue, no consideration was made for how the value of playerChoice would need to be used to select which property of the computer dialogue object to use for pulling a random element out of said property's array. Writing this in one line of code meant a syntax error:
-`document.getElementById("CPUsay").innerHTML = CPUverbs.playerChoice[Math.floor(Math.random()*CPUverbs.playerChoice.length)];`
+
+```document.getElementById("CPUsay").innerHTML = CPUverbs.playerChoice[Math.floor(Math.random()*CPUverbs.playerChoice.length)];```
+
 because the name 'playerChoice' did not corresponde to a property inside CPUverbs, this code did not function. Debugging using the browser's dev tools, as well as console logs written into the script.js file helped locate this problem, and why the dialogue lines were returning as undefined. After some research, we found that an index selection syntax could be used with objects, where playerChoice could be evalutated as a value for the index of CPUverbs. This made the line of code function.
-`document.getElementById("CPUsay").innerHTML = CPUverbs[playerChoice][Math.floor(Math.random()*CPUverbs[playerChoice].length)];`
+
+```document.getElementById("CPUsay").innerHTML = CPUverbs[playerChoice][Math.floor(Math.random()*CPUverbs[playerChoice].length)];```
 
 ### Validation
 
 ---
-***Dependencies:***
-**Sheldon Clip:** https://youtu.be/pIpmITBocfM
-**Font Awesome:** https://fontawesome.com/
-**Claude AI:** https://claude.ai/
-**Favicon.io:** https://favicon.io/
-**Coolors:** https://coolors.co/
-**click-buttons-ui-menu.mp3** Sound Effect by <a href="https://pixabay.com/users/skyscraper_seven-43500092/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=203601">Rusu Gabriel</a> from <a href="https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=203601">Pixabay</a>
+*Dependencies:*
+
+Sheldon Clip: https://youtu.be/pIpmITBocfM
+
+Font Awesome: https://fontawesome.com/
+
+Claude AI: https://claude.ai/
+
+Favicon.io: https://favicon.io/
+
+Coolors: https://coolors.co/
+
+click-buttons-ui-menu.mp3 Sound Effect by <a href="https://pixabay.com/users/skyscraper_seven-43500092/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=203601">Rusu Gabriel</a>
