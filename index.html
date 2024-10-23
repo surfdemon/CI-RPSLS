@@ -69,13 +69,13 @@
 
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link newGame" data-bs-toggle="modal" data-bs-target="#newGameModal">New Game</a>
+                        <a class="nav-link newGame" data-bs-toggle="modal" data-bs-target="#newGameModal" id="btnNewGame">New Game</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link rules" data-bs-toggle="modal" data-bs-target="#rulesModal">Rules</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link history" data-bs-toggle="modal" data-bs-target="#historyModal">Game History</a>
+                        <a class="nav-link history" data-bs-toggle="modal" data-bs-target="#historyModal">Score History</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link credits" data-bs-toggle="modal" data-bs-target="#creditsModal">Credits</a>
@@ -1356,7 +1356,7 @@
                     </div>
 
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary log-reset" id="btnResetGameData">Reset game data</button>
+                        <button type="button" class="btn btn-secondary log-reset" data-bs-toggle="modal" data-bs-target="#newGameModal" id="btnResetGameData">New Game</button>
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     </div>
 
@@ -1364,7 +1364,7 @@
             </div>
         </div>
 
-        <div class="newGameModal modal" id="newGameModal">
+        <div class="modal" id="newGameModal">
             <div class="modal-dialog modal-md">
                 <div class="modal-content">
                     <div class="modal-header">
