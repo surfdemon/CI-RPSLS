@@ -213,6 +213,16 @@ footer ul {
     display: block !important;
 }
 
+@media screen and (min-width:992px  ){
+    body {
+        background-color: gray;
+    }
+    
+    .plaSVG, .comSVG {
+        height: calc(100vh - 373px);
+    }
+}
+
 @media screen and (max-width:992px  ){
     #gameArea { 
         flex-direction: column;
