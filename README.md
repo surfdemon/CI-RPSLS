@@ -3,16 +3,16 @@
 **Live link:** https://surfdemon.github.io/CI_Rock_Paper_Scissors_Lizard_Spock/
  
 ### Rules
-<img src="assets/images/rules.png" alt="rules" height="250px">
+<img src="assets/images/rules.png" alt="rules" width="400px">
 
 ### Purpose
 A web-based, fully functional game, where Users go against our code in games of Rock, Paper, Scissors, Lizard, Spock. It generates a response to one of the five moves, and compares it to the user's inputted move using game rules to determine a winner.
 
 ### Target Audience
-Bored people.
+Lovers of Star Trek, The Big Bang Theory, and anyone who interacts frequently with geek space; or someone wanting to become familiar with the rules of Rock, Paper, Scissors, Lizard, Spock; or someone who knows the game, and wants to enjoy playing it against random computer generated responses.
 
 ### Wireframes
-<img src="assets/images/RPSLS-wireframe.png" alt="wireframe" width="50%">
+<img src="assets/images/RPSLS-wireframe.png" alt="wireframe" width="400px" style="margin: 10px;">
 
 ### User Stories
 Features in this project have been prioretized using MoSCoW.
@@ -52,19 +52,18 @@ Features in this project have been prioretized using MoSCoW.
 
 ## Considerations
 ### Technology
-- **Youtube Embeds:** ...
 - **Bootstrap:** The stack for this application is exclusively Bootstrap, and it is our largest dependency. Bootstrap enables us to create clear, pre-formatted components, and cuts down on the demands for time spent in CSS development.
 ### Accessibility
 - **HTML Structuring:** The web application is organized into header, main and footer tags for tools such as search engines and page readers. Due to the nature of this website, there is  a greater challenge present in attemping to maintain functionality if CSS is disabled. The website will not meet it's purpose without Javascript enabled.
 ### Aesthetics
+- **Colour Scheme:** We used Coolors to find a colourscheme for our application, and chose a scheme with tones to draw out the inclusion of lizard and spock in the otherwise traditional rock, paper, scissors paragon (green and blue)
 - **Bootstrap:** The components provided by Bootstrap are simple, and highly customizeable. Given the projects limitted visual design demands, this is more than a desireable amount of developmental agency.
 - **SVGs:** For the game buttons, we used Claude AI to generate SVG files for each choice's icon. These came out to be simple, fun, and small enough to imploy without dependencies.
 
 
-
 ## Application States
 ### State Diagram
-![state-diagram](assets/images/RPSLS-State-Diagram.png)
+<img src="assets/images/RPSLS-State-Diagram.png" alt="state-diagram" style="margin: 10px;">
 
 ## Deployment
 ### Going Live
@@ -74,13 +73,26 @@ Features in this project have been prioretized using MoSCoW.
 **Browser Dev Tools - Console:** By openning dev tools in the deployment, or local port of our working branches using python3's http.server method in gitpod, we were able to view the console, and see where syntax errors were occuring in our script.js file.
 
 For example, the computer dialogue options are stored in arrays that are randomly selected from, and the arrays are stored in one object. In initially writing the line of code responsible for fetching the computer's dialogue, no consideration was made for how the value of playerChoice would need to be used to select which property of the computer dialogue object to use for pulling a random element out of said property's array. Writing this in one line of code meant a syntax error:
-`document.getElementById("CPUsay").innerHTML = CPUverbs.playerChoice[Math.floor(Math.random()*CPUverbs.playerChoice.length)];`
+
+```document.getElementById("CPUsay").innerHTML = CPUverbs.playerChoice[Math.floor(Math.random()*CPUverbs.playerChoice.length)];```
+
 because the name 'playerChoice' did not corresponde to a property inside CPUverbs, this code did not function. Debugging using the browser's dev tools, as well as console logs written into the script.js file helped locate this problem, and why the dialogue lines were returning as undefined. After some research, we found that an index selection syntax could be used with objects, where playerChoice could be evalutated as a value for the index of CPUverbs. This made the line of code function.
-`document.getElementById("CPUsay").innerHTML = CPUverbs[playerChoice][Math.floor(Math.random()*CPUverbs[playerChoice].length)];`
+
+```document.getElementById("CPUsay").innerHTML = CPUverbs[playerChoice][Math.floor(Math.random()*CPUverbs[playerChoice].length)];```
 
 ### Validation
 
 ---
-***Dependencies:***
+*Dependencies:*
 
-**click-buttons-ui-menu.mp3** Sound Effect by <a href="https://pixabay.com/users/skyscraper_seven-43500092/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=203601">Rusu Gabriel</a> from <a href="https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=203601">Pixabay</a>
+Sheldon Clip: https://youtu.be/pIpmITBocfM
+
+Font Awesome: https://fontawesome.com/
+
+Claude AI: https://claude.ai/
+
+Favicon.io: https://favicon.io/
+
+Coolors: https://coolors.co/
+
+click-buttons-ui-menu.mp3 Sound Effect by <a href="https://pixabay.com/users/skyscraper_seven-43500092/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=203601">Rusu Gabriel</a>
