@@ -69,7 +69,7 @@
 
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link newGame">New Game</a>
+                        <a class="nav-link newGame" data-bs-toggle="modal" data-bs-target="#newGameModal">New Game</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link rules" data-bs-toggle="modal" data-bs-target="#rulesModal">Rules</a>
@@ -90,9 +90,7 @@
                 </form>
                 <button class="btn btnUsernameSubmit hidden" id="submitUsername">Submit</button>
                 
-
             </div>
-
     </nav>
 
     <main class="mx-auto text-center">
@@ -1365,6 +1363,24 @@
             </div>
         </div>
 
+        <div class="newGameModal modal" id="newGameModal">
+            <div class="modal-dialog modal-md">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="h3">Confirm new game</h1>
+                    </div>
+                    <div class="modal-body">
+                        <p>Running a  new game will delete your game history!</p>
+                         <p>Are you sure you want to continue?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" id="confirmNewGame">Yes!</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No!</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </main>
 
     <div class="container">
@@ -1388,6 +1404,9 @@
                         class="fa-brands fa-github"> </i> Find Us on GitHub</a></p>
         </footer>
     </div>
+
+
+
 </body>
 
 </html>
