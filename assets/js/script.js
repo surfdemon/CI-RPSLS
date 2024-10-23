@@ -82,11 +82,6 @@ const muteSound = () => {
 
 const unMuteSound = () => {
     localStorage.unMuted = 'true';
-    // var muteBtn = document.getElementById('btnMute');
-    // var soundBtn = document.getElementById("audioBtnClick");
-    // var soundCPU = document.getElementById("audioCPUwin");
-    // var soundPla = document.getElementById("audioPlayerWin");
-    // var muteBtn = document.getElementById("btnMute");
     muteBtn.innerHTML = "Unmuted"
     soundBtn.muted = false;
     soundCPU.muted = false;
@@ -95,29 +90,22 @@ const unMuteSound = () => {
 
 const toggleMuteAudio = () => {
     var soundBtn = document.getElementById("audioBtnClick");
-    console.log(`the muted state in local storage is ${localStorage.unMuted}`);
     localStorage.unMuted = localStorage.unMuted === 'true' ? 'false' : 'true';
     if (localStorage.unMuted === 'true') {
-        console.log('should now unmute sound in the togglemuteaudio function');
         unMuteSound();
     } else if (localStorage.unMuted === 'false' || localStorage.unMuted === 'undefined') {
-        console.log('should now mute sound in the togglemuteaudio function');
         muteSound();
     }
 };
 
 const setAudio = () => { 
     const soundBtn = document.getElementById("audioBtnClick");
-    console.log(`the muted state in local storage is ${localStorage.muted}`);
     if ( localStorage.unMuted === 'true' ) {
-        console.log('sound should be unmuted');
         unMuteSound();
     } else if (localStorage.unMuted === 'false' || localStorage.unMuted === 'undefined') {
-        console.log('sound should be muted');
         muteSound();
     }
 }
-
 
 // AUDIO CONTROL ENDS
 
@@ -180,13 +168,13 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('cookieButtonAccept').addEventListener('click', cookiesAccepted);
     document.getElementById('cookieButtonReject').addEventListener('click', cookiesRejected);
     document.getElementById('confirmNewGame').addEventListener('click', resetGameData);
-    if ( localStorage.logScores !== 'true' ) { 
+    if (localStorage.logScores !== 'true') {
         showCookieMsg();
     } else {
         showUserForm();
     }
     let username = localStorage.username;
-    if (username !== undefined && localStorage.logScores === 'true' ){
+    if (username !== undefined && localStorage.logScores === 'true') {
         updateUsernameOnScreen(username);
     }
     populateLogHistory();
