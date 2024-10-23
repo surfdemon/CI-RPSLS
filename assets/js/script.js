@@ -307,5 +307,7 @@ const resetGameData = () => {
     newGameModal.hide();
     updateScoresOnPage();
     document.getElementById('CPUsay').innerHTML = "Greetings. I am the computer.";
+    document.getElementById('choiceSay').innerHTML = "Welcome to";
+    document.getElementById('resultSay').innerHTML = "Rock, Paper, Scissors, Lizard, Spock!";
     document.getElementById("narrator").style.background = '#ECF0F1';
 }
