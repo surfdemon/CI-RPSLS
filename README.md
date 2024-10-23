@@ -3,7 +3,7 @@
 **Live link:** https://surfdemon.github.io/CI_Rock_Paper_Scissors_Lizard_Spock/
  
 ### Rules
-<img src="assets/images/rules.png" alt="rules" height="250px">
+<img src="assets/images/rules.png" alt="rules" width="400px">
 
 ### Purpose
 A web-based, fully functional game, where Users go against our code in games of Rock, Paper, Scissors, Lizard, Spock. It generates a response to one of the five moves, and compares it to the user's inputted move using game rules to determine a winner.
@@ -12,7 +12,7 @@ A web-based, fully functional game, where Users go against our code in games of 
 Bored people.
 
 ### Wireframes
-<img src="assets/images/RPSLS-wireframe.png" alt="wireframe" width="50%">
+<img src="assets/images/RPSLS-wireframe.png" alt="wireframe" width="400px" style="margin: 10px;">
 
 ### User Stories
 Features in this project have been prioretized using MoSCoW.
@@ -49,19 +49,18 @@ Features in this project have been prioretized using MoSCoW.
 
 ## Considerations
 ### Technology
-- **Youtube Embeds:** ...
 - **Bootstrap:** The stack for this application is exclusively Bootstrap, and it is our largest dependency. Bootstrap enables us to create clear, pre-formatted components, and cuts down on the demands for time spent in CSS development.
 ### Accessibility
 - **HTML Structuring:** The web application is organized into header, main and footer tags for tools such as search engines and page readers. Due to the nature of this website, there is  a greater challenge present in attemping to maintain functionality if CSS is disabled. The website will not meet it's purpose without Javascript enabled.
 ### Aesthetics
+- **Colour Scheme:** We used Coolors to find a colourscheme for our application, and chose a scheme with tones to draw out the inclusion of lizard and spock in the otherwise traditional rock, paper, scissors paragon (green and blue)
 - **Bootstrap:** The components provided by Bootstrap are simple, and highly customizeable. Given the projects limitted visual design demands, this is more than a desireable amount of developmental agency.
 - **SVGs:** For the game buttons, we used Claude AI to generate SVG files for each choice's icon. These came out to be simple, fun, and small enough to imploy without dependencies.
 
 
-
 ## Application States
 ### State Diagram
-![state-diagram](assets/images/RPSLS-State-Diagram.png)
+<img src="assets/images/RPSLS-State-Diagram.png" alt="state-diagram" width="400px" style="margin: 10px;">
 
 ## Deployment
 ### Going Live
@@ -79,5 +78,9 @@ because the name 'playerChoice' did not corresponde to a property inside CPUverb
 
 ---
 ***Dependencies:***
-
+**Sheldon Clip:** https://youtu.be/pIpmITBocfM
+**Font Awesome:** https://fontawesome.com/
+**Claude AI:** https://claude.ai/
+**Favicon.io:** https://favicon.io/
+**Coolors:** https://coolors.co/
 **click-buttons-ui-menu.mp3** Sound Effect by <a href="https://pixabay.com/users/skyscraper_seven-43500092/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=203601">Rusu Gabriel</a> from <a href="https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=203601">Pixabay</a>
