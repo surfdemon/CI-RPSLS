@@ -69,13 +69,13 @@
 
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link newGame">New Game</a>
+                        <a class="nav-link newGame" data-bs-toggle="modal" data-bs-target="#newGameModal" id="btnNewGame">New Game</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link rules" data-bs-toggle="modal" data-bs-target="#rulesModal">Rules</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link history" data-bs-toggle="modal" data-bs-target="#historyModal">Game History</a>
+                        <a class="nav-link history" data-bs-toggle="modal" data-bs-target="#historyModal">Score History</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link credits" data-bs-toggle="modal" data-bs-target="#creditsModal">Credits</a>
@@ -84,18 +84,21 @@
 
                 <button class="btn" id="btnMute">Toggle Audio</button>
 
-                <form action="" >
+                <form>
                     <input class="form-control me-2 hidden" type="search" placeholder="Enter a user name"
                         aria-label="Enter user-name" id="newUsername">
                 </form>
                 <button class="btn btnUsernameSubmit hidden" id="submitUsername">Submit</button>
-                
+
+
             </div>
+        </div>
     </nav>
 
     <main class="mx-auto text-center">
-        <div><p><span id="choiceSay">- </span>: <b id="resultSay">-</b></p></div>
-        <div id="gameArea" class="d-flex justify-content-around">  
+        <div id="narrator"><p><span id="choiceSay">Welcome to</span>: <b id="resultSay"> Rock, Paper, Scissors, Lizard Spock</b></p></div>
+        <div id="gameArea" class="d-flex justify-content-around">
+
             <div id="playerArea" class="col-12 col-md-12 col-lg-4">
                 <div id="scoreArea"><strong><span id="playerUsername">Player Score</span>: <span id="playerScore">0</span></strong></div>
 
@@ -104,7 +107,7 @@
                 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
                 <!-- Created with Inkscape (http://www.inkscape.org/) -->
                 
-                <svg
+                <svg class="plaSVG"
                    width="600px"
                    height="600px"
                    viewBox="0 0 400 400"
@@ -668,7 +671,7 @@
                 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
                 <!-- Created with Inkscape (http://www.inkscape.org/) -->
                 
-                <svg
+                <svg class="comSVG"
                    width="600px"
                    height="600px"
                    viewBox="0 0 400 400"
@@ -1280,7 +1283,7 @@
                                 <div class="video-container mb-5">
                                     <iframe width="560" height="315"
                                         src="https://www.youtube.com/embed/pIpmITBocfM?si=jZq7QLTrHR5FbJM2"
-                                        title="YouTube video player" frameborder="0"
+                                        title="YouTube video player"
                                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                                         referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                                 </div>
@@ -1351,10 +1354,28 @@
                     </div>
 
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary log-reset" id="btnResetGameData">Reset game data</button>
+                        <button type="button" class="btn btn-secondary log-reset" data-bs-toggle="modal" data-bs-target="#newGameModal" id="btnResetGameData">New Game</button>
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     </div>
 
+                </div>
+            </div>
+        </div>
+
+        <div class="modal" id="newGameModal">
+            <div class="modal-dialog modal-md">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="h3">Confirm new game</h1>
+                    </div>
+                    <div class="modal-body">
+                        <p>Running a  new game will delete your game history!</p>
+                         <p>Are you sure you want to continue?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" id="confirmNewGame">Yes!</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No!</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1382,6 +1403,9 @@
                         class="fa-brands fa-github"> </i> Find Us on GitHub</a></p>
         </footer>
     </div>
+
+
+
 </body>
 
 </html>

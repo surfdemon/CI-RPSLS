@@ -174,7 +174,6 @@ footer ul {
     pointer-events: all !important;
     position: absolute !important;
     top: 0px !important;
-    transition: all 0.5s fade;
 }
 
 .cookieButton {
@@ -211,6 +210,12 @@ footer ul {
 
 .show {
     display: block !important;
+}
+
+@media screen and (min-width:992px  ){
+    .plaSVG, .comSVG {
+        height: calc(100vh - 373px);
+    }
 }
 
 @media screen and (max-width:992px  ){

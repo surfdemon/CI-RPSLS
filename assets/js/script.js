@@ -118,6 +118,7 @@ const setAudio = () => {
     }
 }
 
+
 // AUDIO CONTROL ENDS
 
 const choices = ["rock", "paper", "scissors", "lizard", "spock"];
@@ -169,6 +170,7 @@ const showCookieMsg = () => {
     document.getElementById('cookieMsg').classList.add('showCookieMsg');
 }
 
+
 const hideCookieMsg = () => {
     document.getElementById('cookieMsg').classList.remove('showCookieMsg');
 }
@@ -178,21 +180,22 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('cookieButtonAccept').addEventListener('click', cookiesAccepted);
     document.getElementById('cookieButtonReject').addEventListener('click', cookiesRejected);
     document.getElementById('confirmNewGame').addEventListener('click', resetGameData);
-    if (localStorage.logScores !== 'true') {
+    if ( localStorage.logScores !== 'true' ) { 
         showCookieMsg();
     } else {
         showUserForm();
     }
     let username = localStorage.username;
-    if (username !== undefined && localStorage.logScores === 'true') {
+    if (username !== undefined && localStorage.logScores === 'true' ){
         updateUsernameOnScreen(username);
     }
     populateLogHistory();
     setAudio();
 })
 
-const logScoresToLocalStorage = (winner, cpuSay) => {
-    if (localStorage.logScores === 'true') {
+
+const logScoresToLocalStorage = (winner, cpuSay) => { 
+    if ( localStorage.logScores === 'true' ){ 
         let scoreHistory = JSON.parse(localStorage.getItem('scoreHistory'));
         if (scoreHistory !== null) {
             if (localStorage.username !== undefined && winner === 'player') {
