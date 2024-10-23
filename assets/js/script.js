@@ -169,6 +169,7 @@ const showCookieMsg = () => {
     document.getElementById('cookieMsg').classList.add('showCookieMsg');
 }
 
+
 const hideCookieMsg = () => {
     document.getElementById('cookieMsg').classList.remove('showCookieMsg');
 }
@@ -191,8 +192,9 @@ document.addEventListener('DOMContentLoaded', () => {
     setAudio();
 })
 
-const logScoresToLocalStorage = (winner, cpuSay) => {
-    if (localStorage.logScores === 'true') {
+
+const logScoresToLocalStorage = (winner, cpuSay) => { 
+    if ( localStorage.logScores === 'true' ){ 
         let scoreHistory = JSON.parse(localStorage.getItem('scoreHistory'));
         if (scoreHistory !== null) {
             if (localStorage.username !== undefined && winner === 'player') {
