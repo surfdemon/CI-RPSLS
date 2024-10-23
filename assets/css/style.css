@@ -174,7 +174,6 @@ footer ul {
     pointer-events: all !important;
     position: absolute !important;
     top: 0px !important;
-    transition: all 0.5s fade;
 }
 
 .cookieButton {
