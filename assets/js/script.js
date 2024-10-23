@@ -67,24 +67,57 @@ const CPUverbs = {
 }
 // QUIPS ENDS
 // AUDIO CONTROL
-const toggleMuteAudio = () => {
-    var muteBtn = document.getElementById('btnMute');
-    var soundBtn = document.getElementById("audioBtnClick");
-    var soundCPU = document.getElementById("audioCPUwin");
-    var soundPla = document.getElementById("audioPlayerWin");
-    var muteBtn = document.getElementById("btnMute");
-if (soundBtn.muted === true) {
-    muteBtn.innerHTML = "Unmuted"
-    soundBtn.muted = false;
-    soundCPU.muted = false;
-    soundPla.muted = false;
-} else {
+    let muteBtn = document.getElementById('btnMute');
+    let soundBtn = document.getElementById("audioBtnClick");
+    let soundCPU = document.getElementById("audioCPUwin");
+    let soundPla = document.getElementById("audioPlayerWin");
+
+const muteSound = () => {
+    localStorage.unMuted = 'false';
     muteBtn.innerHTML = "Muted"
     soundBtn.muted = true;
     soundCPU.muted = true;
     soundPla.muted = true;
-}};
-toggleMuteAudio(); // mutes audio on boot-up
+}
+
+const unMuteSound = () => {
+    localStorage.unMuted = 'true';
+    // var muteBtn = document.getElementById('btnMute');
+    // var soundBtn = document.getElementById("audioBtnClick");
+    // var soundCPU = document.getElementById("audioCPUwin");
+    // var soundPla = document.getElementById("audioPlayerWin");
+    // var muteBtn = document.getElementById("btnMute");
+    muteBtn.innerHTML = "Unmuted"
+    soundBtn.muted = false;
+    soundCPU.muted = false;
+    soundPla.muted = false;
+}
+
+const toggleMuteAudio = () => {
+    var soundBtn = document.getElementById("audioBtnClick");
+    console.log(`the muted state in local storage is ${localStorage.unMuted}`);
+    localStorage.unMuted = localStorage.unMuted === 'true' ? 'false' : 'true';
+    if (localStorage.unMuted === 'true') {
+        console.log('should now unmute sound in the togglemuteaudio function');
+        unMuteSound();
+    } else if (localStorage.unMuted === 'false' || localStorage.unMuted === 'undefined') {
+        console.log('should now mute sound in the togglemuteaudio function');
+        muteSound();
+    }
+};
+
+const setAudio = () => { 
+    const soundBtn = document.getElementById("audioBtnClick");
+    console.log(`the muted state in local storage is ${localStorage.muted}`);
+    if ( localStorage.unMuted === 'true' ) {
+        console.log('sound should be unmuted');
+        unMuteSound();
+    } else if (localStorage.unMuted === 'false' || localStorage.unMuted === 'undefined') {
+        console.log('sound should be muted');
+        muteSound();
+    }
+}
+
 // AUDIO CONTROL ENDS
 
 const choices = ["rock", "paper", "scissors", "lizard", "spock"];
@@ -92,7 +125,7 @@ const rules = {
     rock: ["scissors", "lizard"],
     paper: ["rock", "spock"],
     scissors: ["paper", "lizard"],
-    lizard: ["spock", "paper", ],
+    lizard: ["spock", "paper",],
     spock: ["scissors", "rock"]
 };
 
@@ -121,7 +154,7 @@ const showUserForm = () => {
     document.getElementById('newUsername').classList.add('show');
 }
 
-const cookiesAccepted = () => { 
+const cookiesAccepted = () => {
     localStorage.logScores = true;
     updateUsernameOnScreen();
     showUserForm();
@@ -140,41 +173,42 @@ const hideCookieMsg = () => {
     document.getElementById('cookieMsg').classList.remove('showCookieMsg');
 }
 
-document.addEventListener('DOMContentLoaded', () => { 
+document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('btnMute').addEventListener('click', toggleMuteAudio);
     document.getElementById('cookieButtonAccept').addEventListener('click', cookiesAccepted);
     document.getElementById('cookieButtonReject').addEventListener('click', cookiesRejected);
-    document.getElementById('btnResetGameData').addEventListener('click', resetGameData);
-    if ( localStorage.logScores !== 'true' ) { 
+    document.getElementById('confirmNewGame').addEventListener('click', resetGameData);
+    if (localStorage.logScores !== 'true') {
         showCookieMsg();
-    } else { 
+    } else {
         showUserForm();
     }
     let username = localStorage.username;
-    if (username !== undefined && localStorage.logScores === 'true' ){
+    if (username !== undefined && localStorage.logScores === 'true') {
         updateUsernameOnScreen(username);
     }
     populateLogHistory();
+    setAudio();
 })
 
-const logScoresToLocalStorage = (winner, cpuSay) => { 
-    if ( localStorage.logScores === 'true' ){ 
+const logScoresToLocalStorage = (winner, cpuSay) => {
+    if (localStorage.logScores === 'true') {
         let scoreHistory = JSON.parse(localStorage.getItem('scoreHistory'));
-        if (scoreHistory !== null){ 
-            if ( localStorage.username !== undefined && winner === 'player' ){
-                scoreHistory.push({'winner': localStorage.username, 'quip': cpuSay, 'playerScore': playerScore, 'computerScore': computerScore});
+        if (scoreHistory !== null) {
+            if (localStorage.username !== undefined && winner === 'player') {
+                scoreHistory.push({ 'winner': localStorage.username, 'quip': cpuSay, 'playerScore': playerScore, 'computerScore': computerScore });
             } else {
-                scoreHistory.push({'winner': winner, 'quip': cpuSay, 'playerScore': playerScore, 'computerScore': computerScore});
+                scoreHistory.push({ 'winner': winner, 'quip': cpuSay, 'playerScore': playerScore, 'computerScore': computerScore });
             }
             localStorage.setItem('scoreHistory', JSON.stringify(scoreHistory));
-        } else { 
-            scoreHistory = [{'winner': winner, 'quip': cpuSay, 'playerScore': playerScore, 'computerScore': computerScore}];
+        } else {
+            scoreHistory = [{ 'winner': winner, 'quip': cpuSay, 'playerScore': playerScore, 'computerScore': computerScore }];
             localStorage.setItem('scoreHistory', JSON.stringify(scoreHistory));
         }
-    } 
+    }
 }
 
-const updateScoresOnPage = () => { 
+const updateScoresOnPage = () => {
     document.getElementById("playerScore").innerHTML = playerScore;
     document.getElementById("computerScore").innerHTML = computerScore;
 }
@@ -185,32 +219,35 @@ function updateScore(winner, playerChoice, computerChoice) {
     let cpuSay;
     if (winner === 'tie') {
         document.getElementById("resultSay").innerHTML = "No one Wins..."
-        cpuSay = CPUverbs.tie[Math.floor(Math.random()*CPUverbs.tie.length)];
+        cpuSay = CPUverbs.tie[Math.floor(Math.random() * CPUverbs.tie.length)];
         document.getElementById("CPUsay").innerHTML = cpuSay;
+        document.getElementById("narrator").style.background = '#b8b8b8';
     } else if (winner === 'player') {
         document.getElementById("resultSay").innerHTML = "Player Wins!"
         playerScore++;
-        if ( localStorage.logScores === 'true'){
+        if (localStorage.logScores === 'true') {
             localStorage.playerScore = playerScore;
         }
         updateScoresOnPage();
         document.getElementById("audioCPUwin").load();
         document.getElementById("audioPlayerWin").load();
         document.getElementById("audioPlayerWin").play();
-        cpuSay = CPUverbs.defeat[Math.floor(Math.random()*CPUverbs.defeat.length)];
+        cpuSay = CPUverbs.defeat[Math.floor(Math.random() * CPUverbs.defeat.length)];
         document.getElementById("CPUsay").innerHTML = cpuSay;
+        document.getElementById("narrator").style.background = '#bbf1c0';
     } else {
         document.getElementById("resultSay").innerHTML = "Computer Wins!"
         computerScore++;
-        if (localStorage.logScores === 'true'){
+        if (localStorage.logScores === 'true') {
             localStorage.computerScore = computerScore;
         }
         updateScoresOnPage();
         document.getElementById("audioCPUwin").load();
         document.getElementById("audioPlayerWin").load();
         document.getElementById("audioCPUwin").play();
-        cpuSay = CPUverbs[playerChoice][Math.floor(Math.random()*CPUverbs[playerChoice].length)];
+        cpuSay = CPUverbs[playerChoice][Math.floor(Math.random() * CPUverbs[playerChoice].length)];
         document.getElementById("CPUsay").innerHTML = cpuSay;
+        document.getElementById("narrator").style.background = '#eca2a2';
     }
     logScoresToLocalStorage(winner, cpuSay);
     updateHistoryLog(winner, cpuSay, playerScore, computerScore);
@@ -218,7 +255,7 @@ function updateScore(winner, playerChoice, computerChoice) {
 
 //event listeners for player choice buttons
 document.querySelectorAll(".choiceButton").forEach(button => {
-    button.addEventListener("click", function() {
+    button.addEventListener("click", function () {
         const playerChoice = this.getAttribute("data-type");
         const computerChoice = getComputerChoice();
         document.getElementById("audioBtnClick").load();
@@ -230,21 +267,21 @@ document.querySelectorAll(".choiceButton").forEach(button => {
     });
 });
 
-const showComputerChoice = (computerChoice) => { 
+const showComputerChoice = (computerChoice) => {
     document.getElementById(`${computerChoice}TargetComputer`).classList.add('show');
-    setTimeout(() =>{ document.getElementById(`${computerChoice}TargetComputer`).classList.remove('show') }, 2000);
+    setTimeout(() => { document.getElementById(`${computerChoice}TargetComputer`).classList.remove('show') }, 2000);
 }
 
 const updateUsernameOnScreen = (username) => {
-    if (username !== undefined && localStorage.username === undefined){
+    if (username !== undefined && localStorage.username === undefined) {
         localStorage.username = username;
     }
     const playerUsername = document.querySelector("#playerUsername");
-    if ( localStorage.username !== undefined || username !== undefined){
+    if (localStorage.username !== undefined || username !== undefined) {
         playerUsername.innerText = localStorage.username !== undefined ? localStorage.username : username;
         document.querySelector("#newUsername").value = localStorage.username !== undefined ? localStorage.username : username;
     }
-    if(localStorage.username !== username) {
+    if (localStorage.username !== username) {
         playerUsername.innerText = username;
         document.querySelector("#newUsername").value = username;
     }
@@ -256,38 +293,42 @@ const createNewUsername = () => {
         alert("Please chose a shorter username...")
     } else {
         updateUsernameOnScreen(newUsername)
-        if ( localStorage.logScores === 'true' ){     
+        if (localStorage.logScores === 'true') {
             localStorage.username = newUsername;
-        } 
+        }
     }
 }
 
 document.getElementById("submitUsername").addEventListener("click", createNewUsername)
 
-document.getElementById("newUsername").addEventListener("keydown", function(event) {
+document.getElementById("newUsername").addEventListener("keydown", function (event) {
     if (event.key === "Enter") {
         event.preventDefault();
         createNewUsername();
     }
 })
 
-const updateHistoryLog = (winner, quip, playerScore, computerScore) => { 
+const updateHistoryLog = (winner, quip, playerScore, computerScore) => {
     let log = document.getElementsByClassName('log')[0];
     let logEntry;
-    if (winner === "tie"){
-        logEntry = "<p><b>(" +  playerScore + ":" +  computerScore + ")</b> " + winner + " no one wins</p><p></p><p>" + quip + "</p>";
+    if (winner === "tie") {
+        logEntry = "<p><b>(" + playerScore + ":" + computerScore + ")</b> " + winner + " no one wins</p><p></p><p>" + quip + "</p>";
     } else {
-        logEntry = "<p><b>(" +  playerScore + ":" +  computerScore + ")</b> " + winner + " wins</p><p></p><p>" + quip + "</p>";
+        logEntry = "<p><b>(" + playerScore + ":" + computerScore + ")</b> " + winner + " wins</p><p></p><p>" + quip + "</p>";
     }
     log.innerHTML = log.innerHTML + logEntry;
 }
 
-const populateLogHistory = () => { 
+const populateLogHistory = () => {
     let logs = JSON.parse(localStorage.scoreHistory);
     logs.forEach((log) => {
         updateHistoryLog(log.winner, log.quip, log.playerScore, log.computerScore);
     });
 }
+
+
+// This has to be outside the resetGameData function to work!
+var newGameModal = new bootstrap.Modal(document.getElementById('newGameModal'));
 
 const resetGameData = () => {
     localStorage.removeItem('scoreHistory');
@@ -297,4 +338,10 @@ const resetGameData = () => {
     log.innerHTML = "";
     playerScore = 0;
     computerScore = 0;
+    newGameModal.hide();
+    updateScoresOnPage();
+    document.getElementById('CPUsay').innerHTML = "Greetings. I am the computer.";
+    document.getElementById('choiceSay').innerHTML = "Welcome to";
+    document.getElementById('resultSay').innerHTML = "Rock, Paper, Scissors, Lizard, Spock!";
+    document.getElementById("narrator").style.background = '#ECF0F1';
 }
