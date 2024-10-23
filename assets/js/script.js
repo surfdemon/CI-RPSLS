@@ -187,6 +187,7 @@ function updateScore(winner, playerChoice, computerChoice) {
         document.getElementById("resultSay").innerHTML = "No one Wins..."
         cpuSay = CPUverbs.tie[Math.floor(Math.random()*CPUverbs.tie.length)];
         document.getElementById("CPUsay").innerHTML = cpuSay;
+        document.getElementById("narrator").style.background = '#b8b8b8';
     } else if (winner === 'player') {
         document.getElementById("resultSay").innerHTML = "Player Wins!"
         playerScore++;
@@ -199,6 +200,7 @@ function updateScore(winner, playerChoice, computerChoice) {
         document.getElementById("audioPlayerWin").play();
         cpuSay = CPUverbs.defeat[Math.floor(Math.random()*CPUverbs.defeat.length)];
         document.getElementById("CPUsay").innerHTML = cpuSay;
+        document.getElementById("narrator").style.background = '#bbf1c0';
     } else {
         document.getElementById("resultSay").innerHTML = "Computer Wins!"
         computerScore++;
@@ -211,6 +213,7 @@ function updateScore(winner, playerChoice, computerChoice) {
         document.getElementById("audioCPUwin").play();
         cpuSay = CPUverbs[playerChoice][Math.floor(Math.random()*CPUverbs[playerChoice].length)];
         document.getElementById("CPUsay").innerHTML = cpuSay;
+        document.getElementById("narrator").style.background = '#eca2a2';
     }
     logScoresToLocalStorage(winner, cpuSay);
     updateHistoryLog(winner, cpuSay, playerScore, computerScore);
@@ -297,4 +300,5 @@ const resetGameData = () => {
     log.innerHTML = "";
     playerScore = 0;
     computerScore = 0;
+    document.getElementById("narrator").style.background = '#ECF0F1';
 }
