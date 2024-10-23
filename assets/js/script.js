@@ -1,5 +1,3 @@
-var logScores = true; 
-
 // QUIPS
 const quipsDefeat = [ // CPU if player wins
     "Live long and prosper.",
@@ -7,7 +5,6 @@ const quipsDefeat = [ // CPU if player wins
     "I am defeated.",
     "Well played.",
     "Bested? By a human!?"
-
 ];
 
 const quipsTie = [ // CPU draw
@@ -16,47 +13,40 @@ const quipsTie = [ // CPU draw
     "You played logically. So did I.",
     "This only delays the inevitable.",
     "What are the odds? They're 20%."
-
 ]
 
 const quips = [ // general CPU win
     "You are defeated.",
-
 ];
 
 const quipsRock = [ // CPU win against rock
     "Such a primative instrument.",
     "Perhaps build a wall with it next time.",
     "Your civilization has yet evolved beyond stone?"
-
 ];
 
 const quipsPaper = [ // CPU win against paper
     "Your defence was... fickle.",
     "Paper? At a moment like this?",
     "We use datapads in the 25th century."
-
 ];
 
 const quipsScissors = [ // CPU win against scissors
     "The choice of a blade was obvious... too obvious.",
     "A bold time to assume the offense. Foolish all the same.",
     "En Garde!"
-
 ];
 
 const quipsLizard = [ // CPU win against lizard
     "I have rendered your reptile inert.",
     "Your lizard, my friend, is dead.",
     "It hissed at me. I killed the beast..."
-
 ];
 
 const quipsSpock = [ // CPU win against spock
     "Of all the souls I have encountered in my travels, his was the most human.",
     "You will serve under me yet, Spock.",
     "Perhaps send a search party for him?"
-
 ];
 
 // push general wins onto specfic win arrays
@@ -77,24 +67,22 @@ const CPUverbs = {
 }
 // QUIPS ENDS
 // AUDIO CONTROL
-var toggleMuteAudio = () => {
+const toggleMuteAudio = () => {
+    var muteBtn = document.getElementById('btnMute');
     var soundBtn = document.getElementById("audioBtnClick");
     var soundCPU = document.getElementById("audioCPUwin");
     var soundPla = document.getElementById("audioPlayerWin");
     var muteBtn = document.getElementById("btnMute");
-    console.log('toggle mute');
 if (soundBtn.muted === true) {
     muteBtn.innerHTML = "Unmuted"
     soundBtn.muted = false;
     soundCPU.muted = false;
     soundPla.muted = false;
-    console.log('on');
 } else {
     muteBtn.innerHTML = "Muted"
     soundBtn.muted = true;
     soundCPU.muted = true;
     soundPla.muted = true;
-    console.log('off');
 }};
 toggleMuteAudio(); // mutes audio on boot-up
 // AUDIO CONTROL ENDS
@@ -112,9 +100,11 @@ const rules = {
 function getComputerChoice() {
     return choices[Math.floor(Math.random() * choices.length)];
 };
+
 // function to track scoring
-let playerScore = 0;
-let computerScore = 0;
+let playerScore = localStorage.playerScore !== undefined ? localStorage.playerScore : 0;
+let computerScore = localStorage.computerScore !== undefined ? localStorage.computerScore : 0;
+
 // function to determine the winner
 function getWinner(playerChoice, computerChoice) {
     if (playerChoice === computerChoice) {
@@ -126,81 +116,106 @@ function getWinner(playerChoice, computerChoice) {
     }
 };
 
+const showUserForm = () => {
+    document.getElementById('submitUsername').classList.add('show');
+    document.getElementById('newUsername').classList.add('show');
+}
 
+const cookiesAccepted = () => { 
+    localStorage.logScores = true;
+    updateUsernameOnScreen();
+    showUserForm();
+    hideCookieMsg();
+}
 
+const cookiesRejected = () => {
+    hideCookieMsg();
+}
 
 const showCookieMsg = () => {
     document.getElementById('cookieMsg').classList.add('showCookieMsg');
 }
 
+const hideCookieMsg = () => {
+    document.getElementById('cookieMsg').classList.remove('showCookieMsg');
+}
+
 document.addEventListener('DOMContentLoaded', () => { 
     document.getElementById('btnMute').addEventListener('click', toggleMuteAudio);
-    if ( document.cookies == "logscores"){
-        logScores = true;
-    } else if ( document.cookies == "nologs") { 
-        logScores = false;
-    } else {
-        console.log('need to show the cookie msg');
-        //showCookieMsg();
+    document.getElementById('cookieButtonAccept').addEventListener('click', cookiesAccepted);
+    document.getElementById('cookieButtonReject').addEventListener('click', cookiesRejected);
+    document.getElementById('btnResetGameData').addEventListener('click', resetGameData);
+    if ( localStorage.logScores !== 'true' ) { 
+        showCookieMsg();
+    } else { 
+        showUserForm();
     }
-
     let username = localStorage.username;
-    if (username !== undefined){
+    if (username !== undefined && localStorage.logScores === 'true' ){
         updateUsernameOnScreen(username);
     }
+    populateLogHistory();
 })
 
-const logScoresToLocalStorage = (winner) => { 
-    if ( logScores == true ){ 
+const logScoresToLocalStorage = (winner, cpuSay) => { 
+    if ( localStorage.logScores === 'true' ){ 
         let scoreHistory = JSON.parse(localStorage.getItem('scoreHistory'));
         if (scoreHistory !== null){ 
             if ( localStorage.username !== undefined && winner === 'player' ){
-                scoreHistory.push(localStorage.username);
+                scoreHistory.push({'winner': localStorage.username, 'quip': cpuSay, 'playerScore': playerScore, 'computerScore': computerScore});
             } else {
-                scoreHistory.push(winner);
+                scoreHistory.push({'winner': winner, 'quip': cpuSay, 'playerScore': playerScore, 'computerScore': computerScore});
             }
             localStorage.setItem('scoreHistory', JSON.stringify(scoreHistory));
         } else { 
-            scoreHistory = [winner];
+            scoreHistory = [{'winner': winner, 'quip': cpuSay, 'playerScore': playerScore, 'computerScore': computerScore}];
             localStorage.setItem('scoreHistory', JSON.stringify(scoreHistory));
         }
-    } else {
-        console.log('logscores is false');
-    }
+    } 
 }
 
+const updateScoresOnPage = () => { 
+    document.getElementById("playerScore").innerHTML = playerScore;
+    document.getElementById("computerScore").innerHTML = computerScore;
+}
 
 // function to update the score and show the result
 function updateScore(winner, playerChoice, computerChoice) {
-
-
-    console.log("updateScore. playerChoice = " + playerChoice + " computerChoice = " + computerChoice)
-
+    showComputerChoice(computerChoice);
+    let cpuSay;
     if (winner === 'tie') {
-        console.log("Its a tie!");
         document.getElementById("resultSay").innerHTML = "No one Wins..."
-        document.getElementById("CPUsay").innerHTML = CPUverbs.tie[Math.floor(Math.random()*CPUverbs.tie.length)];
+        cpuSay = CPUverbs.tie[Math.floor(Math.random()*CPUverbs.tie.length)];
+        document.getElementById("CPUsay").innerHTML = cpuSay;
     } else if (winner === 'player') {
-        console.log("player win");
         document.getElementById("resultSay").innerHTML = "Player Wins!"
         playerScore++;
-        document.getElementById("playerScore").innerHTML = playerScore;
+        if ( localStorage.logScores === 'true'){
+            localStorage.playerScore = playerScore;
+        }
+        updateScoresOnPage();
         document.getElementById("audioCPUwin").load();
         document.getElementById("audioPlayerWin").load();
         document.getElementById("audioPlayerWin").play();
-        document.getElementById("CPUsay").innerHTML = CPUverbs.defeat[Math.floor(Math.random()*CPUverbs.defeat.length)];
+        cpuSay = CPUverbs.defeat[Math.floor(Math.random()*CPUverbs.defeat.length)];
+        document.getElementById("CPUsay").innerHTML = cpuSay;
     } else {
-        console.log("computer win");
         document.getElementById("resultSay").innerHTML = "Computer Wins!"
         computerScore++;
-        document.getElementById("computerScore").innerHTML = computerScore;
+        if (localStorage.logScores === 'true'){
+            localStorage.computerScore = computerScore;
+        }
+        updateScoresOnPage();
         document.getElementById("audioCPUwin").load();
         document.getElementById("audioPlayerWin").load();
         document.getElementById("audioCPUwin").play();
-        document.getElementById("CPUsay").innerHTML = CPUverbs[playerChoice][Math.floor(Math.random()*CPUverbs[playerChoice].length)];
+        cpuSay = CPUverbs[playerChoice][Math.floor(Math.random()*CPUverbs[playerChoice].length)];
+        document.getElementById("CPUsay").innerHTML = cpuSay;
     }
-    logScoresToLocalStorage(winner);
+    logScoresToLocalStorage(winner, cpuSay);
+    updateHistoryLog(winner, cpuSay, playerScore, computerScore);
 };
+
 //event listeners for player choice buttons
 document.querySelectorAll(".choiceButton").forEach(button => {
     button.addEventListener("click", function() {
@@ -208,7 +223,6 @@ document.querySelectorAll(".choiceButton").forEach(button => {
         const computerChoice = getComputerChoice();
         document.getElementById("audioBtnClick").load();
         document.getElementById("audioBtnClick").play();
-
         // Show choices and result
         document.getElementById("plaChoice").innerHTML = `${playerChoice}`
         document.getElementById("choiceSay").innerHTML = `You chose ${playerChoice}, Computer chose ${computerChoice}`;
@@ -216,20 +230,33 @@ document.querySelectorAll(".choiceButton").forEach(button => {
     });
 });
 
+const showComputerChoice = (computerChoice) => { 
+    document.getElementById(`${computerChoice}TargetComputer`).classList.add('show');
+    setTimeout(() =>{ document.getElementById(`${computerChoice}TargetComputer`).classList.remove('show') }, 2000);
+}
+
 const updateUsernameOnScreen = (username) => {
-    playerUsername.innerText = username;
-    document.querySelector("#newUsername").value = username;
+    if (username !== undefined && localStorage.username === undefined){
+        localStorage.username = username;
+    }
+    const playerUsername = document.querySelector("#playerUsername");
+    if ( localStorage.username !== undefined || username !== undefined){
+        playerUsername.innerText = localStorage.username !== undefined ? localStorage.username : username;
+        document.querySelector("#newUsername").value = localStorage.username !== undefined ? localStorage.username : username;
+    }
+    if(localStorage.username !== username) {
+        playerUsername.innerText = username;
+        document.querySelector("#newUsername").value = username;
+    }
 }
 
 const createNewUsername = () => {
     const newUsername = document.querySelector("#newUsername").value;
-    const playerUsername = document.querySelector("#playerUsername");
-
     if (newUsername.length > 15) {
         alert("Please chose a shorter username...")
     } else {
         updateUsernameOnScreen(newUsername)
-        if ( logScores == true ){     
+        if ( localStorage.logScores === 'true' ){     
             localStorage.username = newUsername;
         } 
     }
@@ -238,9 +265,36 @@ const createNewUsername = () => {
 document.getElementById("submitUsername").addEventListener("click", createNewUsername)
 
 document.getElementById("newUsername").addEventListener("keydown", function(event) {
-
     if (event.key === "Enter") {
         event.preventDefault();
         createNewUsername();
     }
 })
+
+const updateHistoryLog = (winner, quip, playerScore, computerScore) => { 
+    let log = document.getElementsByClassName('log')[0];
+    let logEntry;
+    if (winner === "tie"){
+        logEntry = "<p><b>(" +  playerScore + ":" +  computerScore + ")</b> " + winner + " no one wins</p><p></p><p>" + quip + "</p>";
+    } else {
+        logEntry = "<p><b>(" +  playerScore + ":" +  computerScore + ")</b> " + winner + " wins</p><p></p><p>" + quip + "</p>";
+    }
+    log.innerHTML = log.innerHTML + logEntry;
+}
+
+const populateLogHistory = () => { 
+    let logs = JSON.parse(localStorage.scoreHistory);
+    logs.forEach((log) => {
+        updateHistoryLog(log.winner, log.quip, log.playerScore, log.computerScore);
+    });
+}
+
+const resetGameData = () => {
+    localStorage.removeItem('scoreHistory');
+    localStorage.removeItem('playerScore');
+    localStorage.removeItem('computerScore');
+    let log = document.getElementsByClassName('log')[0];
+    log.innerHTML = "";
+    playerScore = 0;
+    computerScore = 0;
+}

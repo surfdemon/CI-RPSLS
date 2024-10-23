@@ -34,6 +34,17 @@
 </head>
 
 <body>
+
+    <div class="cookieHeader">
+        <div id="cookieMsg" class="">
+            <h1 class="h3">Cookies?</h1>
+            <p>This website uses cookies to store your game history and username in your local storage. If you don't want to 
+                this to happen please chose the 'Reject cookies' button. Otherwise, press 'Accept cookies' and get started!</p>
+            <button class="cookieButton" id="cookieButtonAccept">Accept cookies</button>
+            <button class="cookieButton" id="cookieButtonReject">Reject cookies</button>
+        </div>
+    </div>
+
     <!-- sound effects -->
     <audio id="audioBtnClick">
         <source src="assets/sounds/click-buttons-ui-menu.mp3" type="audio/mpeg">
@@ -58,7 +69,7 @@
 
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link newGame">New Game</a>
+                        <a class="nav-link newGame" data-bs-toggle="modal" data-bs-target="#newGameModal">New Game</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link rules" data-bs-toggle="modal" data-bs-target="#rulesModal">Rules</a>
@@ -73,26 +84,14 @@
 
                 <button class="btn" id="btnMute">Toggle Audio</button>
 
-                <form action="">
-                    <input class="form-control me-2" type="search" placeholder="Enter a user name"
+                <form action="" >
+                    <input class="form-control me-2 hidden" type="search" placeholder="Enter a user name"
                         aria-label="Enter user-name" id="newUsername">
                 </form>
-                <button class="btn btnUsernameSubmit" id="submitUsername">Submit</button>
+                <button class="btn btnUsernameSubmit hidden" id="submitUsername">Submit</button>
                 
-
             </div>
-
     </nav>
-
-    <header>
-        <div id="cookieMsg" class="">
-            <h1 class="h3">Cookies?</h1>
-            <p>This website uses cookies to store your game history and username in your local storage. If you don't want to 
-                this to happen please chose the 'Reject cookies' button. Otherwise, press 'Accept cookies' and get started!</p>
-            <button class="cookieButton" id="cookieButtonAccept">Accept cookies</button>
-            <button class="cookieButton" id="cookieButtonReject">Reject cookies</button>
-        </div>
-    </header>
 
     <main class="mx-auto text-center">
         <div><p><span id="choiceSay">- </span>: <b id="resultSay">-</b></p></div>
@@ -874,10 +873,8 @@
                        transform="matrix(1.5436243,0,0,1.5453666,127.59958,-23.781459)"
                        inkscape:label="rock"
                        style="stroke-width:0.99967937;stroke-dasharray:none"
-                       class="choiceButtonComputer"
-                       data-type="rockComputer"
-                       onclick="document.getElementById('rockTargetComputer').classList.add('show');
-                        setTimeout(() =>{ document.getElementById('rockTargetComputer').classList.remove('show') }, 2000);"><desc
+                       class="choiceButtonComputer" 
+                       ><desc
                          id="desc19">rock image</desc><title
                          id="title19">rock</title><path
                          d="M 20,50 Q 30,20 50,20 70,20 80,50 90,80 50,80 10,80 20,50"
@@ -908,9 +905,7 @@
                        transform="matrix(1.3656111,0,0,1.2361632,-12.355048,121.43572)"
                        inkscape:label="lizardComputer"
                        class="choiceButtonComputer"
-                       data-type="lizardComputer"
-                       onclick="document.getElementById('lizardTargetComputer').classList.add('show');
-                setTimeout(() =>{ document.getElementById('lizardTargetComputer').classList.remove('show') }, 2000);"<desc
+                       ><desc
                          id="desc23">lizard image</desc><title
                          id="title23">lizard</title><path
                          d="M 50,10 Q 70,10 80,30 90,50 80,70 70,90 50,90 30,90 20,70 10,50 20,30 30,10 50,10"
@@ -947,9 +942,7 @@
                        transform="matrix(1.2197419,0,0,1.2020043,284.90005,119.16599)"
                        inkscape:label="paperComputer"
                        class="choiceButtonComputer"
-                       data-type="paperComputer"
-                       onclick="document.getElementById('paperTargetComputer').classList.add('show');
-                setTimeout(() =>{ document.getElementById('paperTargetComputer').classList.remove('show') }, 2000);"><desc
+                       ><desc
                          id="desc20">paper image</desc><title
                          id="title20">paper</title><rect
                          x="10"
@@ -995,9 +988,7 @@
                        transform="matrix(1.573163,0,0,1.4084981,46.437799,264.51618)"
                        inkscape:label="spockComputer"
                        class="choiceButtonComputer"
-                       data-type="spockComputer"
-                       onclick="document.getElementById('spockTargetComputer').classList.add('show');
-                    setTimeout(() =>{ document.getElementById('spockTargetComputer').classList.remove('show') }, 2000);"><desc
+                       ><desc
                          id="desc22">spock image</desc><title
                          id="title22">spock</title><ellipse
                          cx="50"
@@ -1038,9 +1029,7 @@
                        transform="matrix(1.5777976,0,0,1.319451,183.40569,268.73094)"
                        inkscape:label="scissorsComputer"
                        class="choiceButtonComputer"
-                       data-type="scissorsComputer"
-                       onclick="document.getElementById('scissorsTargetComputer').classList.add('show');
-                setTimeout(() =>{ document.getElementById('scissorsTargetComputer').classList.remove('show') }, 2000);"><desc
+                       ><desc
                          id="desc21">scissors image</desc><title
                          id="title21">scissors</title><path
                          d="M 30,20 70,80"
@@ -1361,18 +1350,33 @@
 
                     <div class="modal-body">
                         <div class="log">
-                            <p><b>(0:2) </b>Computer wins<p>
-                            <p><i>"I am of a superior intellect."</i></p>
-                            <p><b>(0:1) </b>Computer wins<p>
-                            <p><i>"Your defence was... fickle."</i></p>    
+                               
                         </div>
                     </div>
 
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary log-reset">Reset game data</button>
+                        <button type="button" class="btn btn-secondary log-reset" id="btnResetGameData">Reset game data</button>
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     </div>
 
+                </div>
+            </div>
+        </div>
+
+        <div class="newGameModal modal" id="newGameModal">
+            <div class="modal-dialog modal-md">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="h3">Confirm new game</h1>
+                    </div>
+                    <div class="modal-body">
+                        <p>Running a  new game will delete your game history!</p>
+                         <p>Are you sure you want to continue?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" id="confirmNewGame">Yes!</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No!</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1400,6 +1404,9 @@
                         class="fa-brands fa-github"> </i> Find Us on GitHub</a></p>
         </footer>
     </div>
+
+
+
 </body>
 
 </html>

@@ -55,6 +55,9 @@ svg{
     border: 1px solid var(--accent-color);
     font-weight: 600;
     letter-spacing: 2px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+    margin-top: 10px;
 }
 
 .btnUsernameSubmit:hover {
@@ -64,6 +67,21 @@ svg{
 .navbar-nav li {
     cursor: pointer;
     letter-spacing: 1px;
+}
+
+#btnMute {
+    color: var(--txt-color);
+    border: 1px solid var(--txt-color);
+    font-weight: 600;
+    letter-spacing: 2px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+#btnMute:hover {
+    background-color: var(--accent-color);
 }
 
 /* modal styles */
@@ -130,12 +148,20 @@ footer ul {
 }
 
 /* Cookie Message styles */
+.cookieHeader {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 #cookieMsg {
     z-index: 5;
     opacity: 0;
     pointer-events: none;
     transform: scale(0.8);
     transition: all 0.5s ease;
+    position: absolute; 
+    top: -500px;
 } 
 
 .showCookieMsg {
@@ -146,6 +172,9 @@ footer ul {
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2) !important;
     text-align: center !important;
     pointer-events: all !important;
+    position: absolute !important;
+    top: 0px !important;
+    transition: all 0.5s fade;
 }
 
 .cookieButton {
@@ -176,14 +205,12 @@ footer ul {
     filter: blur(4px);
 }
 
-@media screen and (min-width:992px  ){
-    body {
-        background-color: #1b7efffb;
-    }
+.hidden { 
+    display: none !important;
+}
 
-    .plaSVG, .comSVG {
-        height: 400px;
-    }
+.show {
+    display: block !important;
 }
 
 @media screen and (max-width:992px  ){
