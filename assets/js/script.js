@@ -155,6 +155,7 @@ document.addEventListener('DOMContentLoaded', () => {
         updateUsernameOnScreen(username);
     }
     populateLogHistory();
+    updateScoresOnPage();
 })
 
 const logScoresToLocalStorage = (winner, cpuSay) => { 
