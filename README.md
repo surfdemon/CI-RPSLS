@@ -60,7 +60,7 @@ Features in this project have been prioretized using MoSCoW.
 
 ## Application States
 ### State Diagram
-<img src="assets/images/RPSLS-State-Diagram.png" alt="state-diagram" width="400px" style="margin: 10px;">
+<img src="assets/images/RPSLS-State-Diagram.png" alt="state-diagram" style="margin: 10px;">
 
 ## Deployment
 ### Going Live
