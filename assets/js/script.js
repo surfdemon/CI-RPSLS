@@ -84,6 +84,7 @@ if (soundBtn.muted === true) {
     soundCPU.muted = true;
     soundPla.muted = true;
 }};
+
 toggleMuteAudio(); // mutes audio on boot-up
 // AUDIO CONTROL ENDS
 
@@ -136,6 +137,7 @@ const showCookieMsg = () => {
     document.getElementById('cookieMsg').classList.add('showCookieMsg');
 }
 
+
 const hideCookieMsg = () => {
     document.getElementById('cookieMsg').classList.remove('showCookieMsg');
 }
@@ -151,11 +153,13 @@ document.addEventListener('DOMContentLoaded', () => {
         showUserForm();
     }
     let username = localStorage.username;
+
     if (username !== undefined && localStorage.logScores === 'true' ){
         updateUsernameOnScreen(username);
     }
     populateLogHistory();
 })
+
 
 const logScoresToLocalStorage = (winner, cpuSay) => { 
     if ( localStorage.logScores === 'true' ){ 
@@ -221,7 +225,7 @@ function updateScore(winner, playerChoice, computerChoice) {
 
 //event listeners for player choice buttons
 document.querySelectorAll(".choiceButton").forEach(button => {
-    button.addEventListener("click", function() {
+    button.addEventListener("click", function () {
         const playerChoice = this.getAttribute("data-type");
         const computerChoice = getComputerChoice();
         document.getElementById("audioBtnClick").load();
@@ -261,7 +265,7 @@ const createNewUsername = () => {
         updateUsernameOnScreen(newUsername)
         if ( localStorage.logScores === 'true' ){     
             localStorage.username = newUsername;
-        } 
+        }
     }
 }
 
