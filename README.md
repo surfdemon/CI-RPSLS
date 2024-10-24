@@ -80,7 +80,12 @@ because the name 'playerChoice' did not corresponde to a property inside CPUverb
 
 ```document.getElementById("CPUsay").innerHTML = CPUverbs[playerChoice][Math.floor(Math.random()*CPUverbs[playerChoice].length)];```
 
-### Validation
+## Validation
+### HTML Validation
+<img src="assets/images/image_2024-10-24_093326074.png" alt="html-validation">
+
+### CSS Validation
+<img src="assets/images/image (3) (2).png" alt="css-validation">
 
 ---
 *Dependencies:*
@@ -96,3 +101,7 @@ Favicon.io: https://favicon.io/
 Coolors: https://coolors.co/
 
 click-buttons-ui-menu.mp3 Sound Effect by <a href="https://pixabay.com/users/skyscraper_seven-43500092/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=203601">Rusu Gabriel</a>
+
+HTML Validator: https://validator.w3.org
+
+CSS Validator: https://jigsaw.w3.org/css-validator/
