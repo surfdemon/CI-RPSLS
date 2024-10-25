@@ -69,33 +69,35 @@
 
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link newGame" data-bs-toggle="modal" data-bs-target="#newGameModal">New Game</a>
+                        <a class="nav-link newGame" data-bs-toggle="modal" data-bs-target="#newGameModal" id="btnNewGame">New Game</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link rules" data-bs-toggle="modal" data-bs-target="#rulesModal">Rules</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link history" data-bs-toggle="modal" data-bs-target="#historyModal">Game History</a>
+                        <a class="nav-link history" data-bs-toggle="modal" data-bs-target="#historyModal">Score History</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link credits" data-bs-toggle="modal" data-bs-target="#creditsModal">Credits</a>
                     </li>
                 </ul>
 
-                <form action="" >
+                <button class="btn" id="btnMute">Toggle Audio</button>
+
+                <form>
                     <input class="form-control me-2 hidden" type="search" placeholder="Enter a user name"
                         aria-label="Enter user-name" id="newUsername">
                 </form>
                 <button class="btn btnUsernameSubmit hidden" id="submitUsername">Submit</button>
-                <button class="btn" id="btnMute">Toggle Audio</button>
+
+
             </div>
+        </div>
     </nav>
 
     <main class="mx-auto text-center">
         <div id="narrator"><p><span id="choiceSay">Welcome to</span>: <b id="resultSay"> Rock, Paper, Scissors, Lizard Spock</b></p></div>
         <div id="gameArea" class="d-flex justify-content-around">
-
-    
 
             <div id="playerArea" class="col-12 col-md-12 col-lg-4">
                 <div id="scoreArea"><strong><span id="playerUsername">Player Score</span>: <span id="playerScore">0</span></strong></div>
@@ -467,39 +469,47 @@
                          stroke="#404040"
                          stroke-width="2"
                          id="path6" /></g><g
-                       id="scissors"
-                       transform="matrix(1.5777976,0,0,1.319451,183.40569,268.73094)"
-                       inkscape:label="scissors"
-                       class="choiceButton"
+                         id="scissors"
+                         transform="matrix(1.5777976,0,0,1.319451,183.40569,268.73094)"
+                         inkscape:label="scissors"
+                         class="choiceButton"
                        data-type="scissors"
                        onclick="document.getElementById('scissorsTarget').classList.add('show');
                 setTimeout(() =>{ document.getElementById('scissorsTarget').classList.remove('show') }, 2000);"><desc
-                         id="desc21">scissors image</desc><title
-                         id="title21">scissors</title><path
-                         d="M 30,20 70,80"
-                         fill="none"
-                         stroke="#404040"
-                         stroke-width="3"
-                         id="path1-8" /><path
-                         d="M 70,20 30,80"
-                         fill="none"
-                         stroke="#404040"
-                         stroke-width="3"
-                         id="path2-8" /><circle
-                         cx="30"
-                         cy="85"
-                         r="10"
-                         fill="#c0c0c0"
-                         stroke="#404040"
-                         stroke-width="2"
-                         id="circle2-3" /><circle
-                         cx="70"
-                         cy="85"
-                         r="10"
-                         fill="#c0c0c0"
-                         stroke="#404040"
-                         stroke-width="2"
-                         id="circle3" /></g><path
+                           id="desc21">scissors image</desc><title
+                           id="title21">scissors</title><rect
+                           style="opacity:0;fill:#404040;fill-opacity:1;stroke:#000000;stroke-width:1.544"
+                           id="rect3"
+                           width="98.949997"
+                           height="102.38701"
+                           x="212.50829"
+                           y="293.28845"
+                           transform="matrix(0.63379486,0,0,0.75789098,-116.24158,-203.66875)" /><path
+                           d="M 30,20 70,80"
+                           fill="none"
+                           stroke="#404040"
+                           stroke-width="3"
+                           id="path1-8" /><circle
+                           cx="30"
+                           cy="85"
+                           r="10"
+                           fill="#c0c0c0"
+                           stroke="#404040"
+                           stroke-width="2"
+                           id="circle2-3" /><path
+                           d="M 70,20 30,80"
+                           fill="none"
+                           stroke="#404040"
+                           stroke-width="3"
+                           id="path2-8"
+                           transform="translate(2.6408102e-8)" /><circle
+                           cx="70"
+                           cy="85"
+                           r="10"
+                           fill="#c0c0c0"
+                           stroke="#404040"
+                           stroke-width="2"
+                           id="circle3" /></g><path
                        style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:2.165;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#Triangle)"
                        d="m 309.97118,301.82671 39.8762,-57.41066"
                        id="path9" /><path
@@ -1213,7 +1223,6 @@
                 
 
             </div>
-
         </div>
 
         <!-- Rules Modal -->
@@ -1282,7 +1291,7 @@
                                 <div class="video-container mb-5">
                                     <iframe width="560" height="315"
                                         src="https://www.youtube.com/embed/pIpmITBocfM?si=jZq7QLTrHR5FbJM2"
-                                        title="YouTube video player" frameborder="0"
+                                        title="YouTube video player"
                                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                                         referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                                 </div>
@@ -1325,9 +1334,10 @@
                             <li><a href="https://claude.ai/new">Claude AI</a></li>
                             <li><a href="https://favicon.io/">Favicon.io</a></li>
                             <li><a href="https://coolors.co/">Coolors.co</a></li>
+                            <li>Music by Herbie</li>
                         </ul>
                     </div>
-                    
+
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     </div>
@@ -1353,7 +1363,7 @@
                     </div>
 
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary log-reset" id="btnResetGameData">Reset game data</button>
+                        <button type="button" class="btn btn-secondary log-reset" data-bs-toggle="modal" data-bs-target="#newGameModal" id="btnResetGameData">New Game</button>
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     </div>
 
@@ -1361,7 +1371,7 @@
             </div>
         </div>
 
-        <div class="newGameModal modal" id="newGameModal">
+        <div class="modal" id="newGameModal">
             <div class="modal-dialog modal-md">
                 <div class="modal-content">
                     <div class="modal-header">
