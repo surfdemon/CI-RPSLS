@@ -184,6 +184,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 const logScoresToLocalStorage = (winner, cpuSay) => { 
     if ( localStorage.logScores === 'true' ){ 
+        
         let scoreHistory = JSON.parse(localStorage.getItem('scoreHistory'));
         if (scoreHistory !== null) {
             if (localStorage.username !== undefined && winner === 'player') {
