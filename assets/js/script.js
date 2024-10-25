@@ -93,7 +93,7 @@ const toggleMuteAudio = () => {
     localStorage.unMuted = localStorage.unMuted === 'true' ? 'false' : 'true';
     if (localStorage.unMuted === 'true') {
         unMuteSound();
-    } else if (localStorage.unMuted === 'false' || localStorage.unMuted === 'undefined') {
+    } else {
         muteSound();
     }
 };
@@ -102,7 +102,7 @@ const setAudio = () => {
     const soundBtn = document.getElementById("audioBtnClick");
     if ( localStorage.unMuted === 'true' ) {
         unMuteSound();
-    } else if (localStorage.unMuted === 'false' || localStorage.unMuted === 'undefined') {
+    } else {
         muteSound();
     }
 }
@@ -311,10 +311,14 @@ const updateHistoryLog = (winner, quip, playerScore, computerScore) => {
 }
 
 const populateLogHistory = () => {
-    let logs = JSON.parse(localStorage.scoreHistory);
-    logs.forEach((log) => {
-        updateHistoryLog(log.winner, log.quip, log.playerScore, log.computerScore);
-    });
+    try {
+        let logs = JSON.parse(localStorage.scoreHistory);
+        logs.forEach((log) => {
+            updateHistoryLog(log.winner, log.quip, log.playerScore, log.computerScore);
+        });
+    } catch (error) {
+        console.log(error);     
+    }
 }
 
 
