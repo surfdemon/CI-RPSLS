@@ -1,6 +1,9 @@
 #  Rock, Paper, Scissors, Lizard, Spock: a web-based game.
+<img src="assets/images/rpsls-responsive-devices-view.png" alt="Responsive image of game on different devices">
+
 ## Overview
-**Live link:** https://surfdemon.github.io/CI_Rock_Paper_Scissors_Lizard_Spock/
+
+**Live link:** [https://surfdemon.github.io/CI-RPSLS/](https://surfdemon.github.io/CI-RPSLS/)
  
 ### Rules
 <img src="assets/images/rules.png" alt="rules" width="400px">
@@ -90,18 +93,18 @@ because the name 'playerChoice' did not corresponde to a property inside CPUverb
 ---
 *Dependencies:*
 
-Sheldon Clip: https://youtu.be/pIpmITBocfM
+Sheldon Clip: [https://youtu.be/pIpmITBocfM](https://youtu.be/pIpmITBocfM)
 
-Font Awesome: https://fontawesome.com/
+Font Awesome: [https://fontawesome.com](/https://fontawesome.com/)
 
-Claude AI: https://claude.ai/
+Claude AI: [https://claude.ai/](https://claude.ai/)
 
-Favicon.io: https://favicon.io/
+Favicon.io: [https://favicon.io/](https://favicon.io/)
 
-Coolors: https://coolors.co/
+Coolors: [https://coolors.co/](https://coolors.co/)
 
 click-buttons-ui-menu.mp3 Sound Effect by <a href="https://pixabay.com/users/skyscraper_seven-43500092/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=203601">Rusu Gabriel</a>
 
-HTML Validator: https://validator.w3.org
+HTML Validator: [https://validator.w3.org](https://validator.w3.org)
 
-CSS Validator: https://jigsaw.w3.org/css-validator/
+CSS Validator: [https://jigsaw.w3.org/css-validator/](https://jigsaw.w3.org/css-validator/)
